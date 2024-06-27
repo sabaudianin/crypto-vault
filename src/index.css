@@ -1,7 +1,44 @@
 @import 'normalize.css';
+:root {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    --primary-color: #ffd52c;
+    --secondary-color: #ff5c00;
+    --tertiary-color: #c72d04;
+    --background-color: #111;
+    scrollbar-color: var(--primary-color) var(--secondary-color);
+    font-size: clamp(18px, 3vw, 30px);
+}
 
 * {
     box-sizing: border-box;
     margin:0;
     padding:0;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+header,
+footer {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+main {
+    overflow: hidden;
+}
+
+section {
+    height: 100%;
+    overflow: hidden auto;
+    margin: 1rem 0;
 }

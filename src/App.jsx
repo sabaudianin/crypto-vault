@@ -1,18 +1,27 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import {HashRouter, Route, Routes} from 'react-router-dom';
+import Header from './components/header/Header.jsx'
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Contact from './pages/Contact.jsx';
+
+import Wrapper from './components/wrapper/Wrapper.jsx';
 
 const App = () => {
-  return (
-      <div>
-        <Typography variant="h3" component="h3">
-          Hello, Vite with Material UI!
-        </Typography>
-        <Button variant="contained" color="secondary">
-          Material UI Button
-        </Button>
-      </div>
-  );
+    return (
+
+        <HashRouter>
+            <Wrapper>
+                <Header/>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
+                </Routes>
+            </Wrapper>
+        </HashRouter>
+
+    );
 };
 
 export default App;
