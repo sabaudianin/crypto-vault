@@ -22,7 +22,8 @@ const App = () => {
     return (
 
         <HashRouter>
-            <DataProvider>
+            <DataProv
+                ider>
                 <Wrapper>
                     <ResponsiveAppBar/>
                     <SimpleContainer>
