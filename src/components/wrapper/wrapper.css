@@ -1,18 +1,16 @@
 .retro-container {
-    width: 90vw;
-    height: 90vh;
+    width: 98vw;
+    height: 98vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    overflow: hidden;
+    overflow: auto;
     padding: 0.5rem;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
     mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
     mask-size: 100% 2px;
     text-shadow: 0 0 0.5rem;
-
 }
-
 
 @keyframes crtAnimation {
     0% {

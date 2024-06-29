@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static" className={styles.header__appBar}>
+        <AppBar position="static" className={styles.header__appBar} >
             <Toolbar>
 
                 <Typography

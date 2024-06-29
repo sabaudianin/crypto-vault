@@ -11,7 +11,7 @@ import styles from './HeaderNavMenu.module.css'
 
 
 const pages = [
-    {name: 'Home', path: '/'},
+    {name: 'Home', path: '/home'},
     {name: 'About', path: '/about'},
     {name: 'Contact', path: '/contact'},
 ];

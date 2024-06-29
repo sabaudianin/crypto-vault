@@ -11,7 +11,7 @@
 }
 
 .header__logo{
-    margin-right: 16px; /* odpowiada mr: 2 */
+    margin-right: 16px;
     flex-grow: 1;
     font-family: monospace ;
     font-weight: 700 ;
