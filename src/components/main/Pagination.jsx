@@ -9,9 +9,11 @@ const StyledStack=styled(Stack)({
     display:'flex',
     justifyContent:'center',
     width:'100%',
+    fontWeight: 400,
     '& .MuiPaginationItem-root': {
         color: 'inherit',
         fontFamily: 'inherit',
+        fontWeight: 400,
         '&.Mui-selected': {
             backgroundColor: 'rgba(196,143,8,1)',
 
@@ -37,7 +39,7 @@ const PaginationSize = () => {
                     onChange={handleChange}
                     page={page}
                     sx={{
-
+                        fontFamily: 'inherit',
 
                     }}/>
             </StyledStack>

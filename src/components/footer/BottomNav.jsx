@@ -22,17 +22,22 @@ const StyledBottomNavigation = styled(BottomNavigation)({
     position: 'fixed',
     bottom: '2vh',
     width: '100%',
-    fontFamily: 'inherit',
-    fontWeight: 'bold',
+
+
+
 });
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)({
     color: 'yellow',
-    fontFamily: 'inherit',
+
 
     '&.Mui-selected': {
         color: 'rgba(196,143,8,1)',
 
+    },
+    '& .MuiBottomNavigationAction-label': {
+        fontFamily: 'inherit',
+        fontWeight: 700,
 
     },
 })
@@ -47,27 +52,29 @@ export default function SimpleBottomNavigation() {
                 <StyledBottomNavigation
                     showLabels
                     value={value}
+                    sx={{fontFamily:'inherit'}}
                     onChange={(event, newValue) => {
                         setValue(newValue);
                     }}
                 >
                     <StyledBottomNavigationAction
-                        label="Dashboard"
+                        label="DASHBOARD"
                         icon={<GridViewIcon/>}
                         component={Link}
                         to="/"
                     />
                     <StyledBottomNavigationAction
-                        label="Buy/Sell"
+                        label="TRADE"
                         icon={<AddCardIcon/>}
                         component={Link}
                         to="/trade"
                     />
                     <StyledBottomNavigationAction
-                        label="Wallet"
+                        label="WALLET"
                         icon={<SavingsIcon/>}
                         component={Link}
                         to="/wallet"
+
                     />
                 </StyledBottomNavigation>
             </StyledBox>
