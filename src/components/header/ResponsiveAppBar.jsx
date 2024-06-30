@@ -27,30 +27,32 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static" className={styles.header__appBar} >
-            <Toolbar>
+        <main>
+            <AppBar position="static" className={styles.header__appBar}>
+                <Toolbar>
 
-                <Typography
-                    variant="h6"
-                    noWrap
-                    className={styles.header__logo}
-                >
-                    CryptoVault
-                </Typography>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        className={styles.header__logo}
+                    >
+                        CryptoVault
+                    </Typography>
 
-                <HeaderNavMenu
-                    navMenu={navMenu}
-                    handleOpenNavMenu={handleOpenNavMenu}
-                    handleCloseNavMenu={handleCloseNavMenu}
-                />
+                    <HeaderNavMenu
+                        navMenu={navMenu}
+                        handleOpenNavMenu={handleOpenNavMenu}
+                        handleCloseNavMenu={handleCloseNavMenu}
+                    />
 
-                <HeaderUserMenu
-                    userMenu={userMenu}
-                    handleOpenUserMenu={handleOpenUserMenu}
-                    handleCloseUserMenu={handleCloseUserMenu}
-                />
-            </Toolbar>
-        </AppBar>
+                    <HeaderUserMenu
+                        userMenu={userMenu}
+                        handleOpenUserMenu={handleOpenUserMenu}
+                        handleCloseUserMenu={handleCloseUserMenu}
+                    />
+                </Toolbar>
+            </AppBar>
+        </main>
     );
 }
 

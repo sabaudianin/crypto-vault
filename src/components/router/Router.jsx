@@ -12,19 +12,19 @@ import BasicGrid from "../main/Dashboard.jsx";
 import Wallet from '../main/Wallet.jsx'
 
 
-
-
 const Router = () => {
     return (
-        <Routes>
-            <Route path="/" element={<BasicGrid/>}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="/trade" element={<Trade/>}/>
-            <Route path="/wallet" element={<Wallet/>}/>
-            <Route path='*' element={<NotFound/>}/>
-        </Routes>
+        <main>
+            <Routes>
+                <Route path="/" element={<BasicGrid/>}/>
+                <Route path="/home" element={<Home/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/contact" element={<Contact/>}/>
+                <Route path="/trade" element={<Trade/>}/>
+                <Route path="/wallet" element={<Wallet/>}/>
+                <Route path='*' element={<NotFound/>}/>
+            </Routes>
+        </main>
 
 
     );

@@ -27,19 +27,14 @@ body {
 }
 
 
-/*header,*/
-/*footer {*/
-/*    display: flex;*/
-/*    gap: 2rem;*/
-/*    align-items: center;*/
-/*}*/
+header,
+footer {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
 
-/*main {*/
-/*    overflow: hidden;*/
-/*}*/
+main {
+    overflow: hidden;
+}
 
-/*section {*/
-/*    height: 100%;*/
-/*    overflow: hidden auto;*/
-/*    margin: 1rem 0;*/
-/*}*/

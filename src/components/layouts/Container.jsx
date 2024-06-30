@@ -6,7 +6,7 @@ export default function SimpleContainer({children,style}) {
 
     const StyledContainer=styled(Container)({
         overflowY: 'auto' ,
-        marginBottom:'10vh'
+        marginBottom:'8vh'
     })
 
     return (

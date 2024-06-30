@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
+
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
@@ -17,6 +18,13 @@ const StyledBox = styled(Box)({
     paddingTop: '40px',
     flexGrow: 1,
 })
+
+const StyledGrid = styled(Grid)({
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+})
+
 
 const Item = styled(Paper)(({theme}) => ({
     background: 'inherit',
@@ -34,8 +42,8 @@ const Item = styled(Paper)(({theme}) => ({
 const BasicGrid = () => {
     const {data, loading, error} = useContext(DataContext);
 
-    if (loading) return (
-        <div>....Loading...Please Wait...</div>);
+    // if (loading) return (
+    //     <div>....Loading...Please Wait...</div>);
     if (error) return (
         <div>Error: {error.message}</div>)
 
@@ -54,7 +62,7 @@ const BasicGrid = () => {
                         <AddCircleOutlineIcon/>
                     </Item>
                 </Grid>
-                <Grid  item xs={6}>
+                <Grid item xs={6}>
                     <Item>
                         <p>SELL</p>
                         <RemoveCircleOutlineIcon/>
@@ -63,16 +71,21 @@ const BasicGrid = () => {
 
                 <Grid item xs={12}>
                     <Item spacing={3}>Current Price:</Item>
-                    <Stack spacing={2}>
-                        {data.map(currency => (
-                            <Item key={currency.id}>{currency.name}-${currency.current_price.toFixed(2)}</Item>
-                        ))}
-                    </Stack>
+                    {loading
+                        ? <div>....Loading...Please Wait...</div>
+                        : <Stack spacing={2}>
+                            {data.map(currency => (
+                                <Item key={currency.id}>{currency.name}-${currency.current_price.toFixed(2)}</Item>
+                            ))}
+                        </Stack>
+                    }
 
                 </Grid>
-                <Grid item xs={12}>
-                    <PaginationSize />
-                </Grid>
+                <StyledGrid>
+                    <div>
+                        <PaginationSize/>
+                    </div>
+                </StyledGrid>
             </Grid>
         </StyledBox>
     )
