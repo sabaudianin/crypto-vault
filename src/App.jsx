@@ -20,28 +20,13 @@ import SimpleBottomNavigation from "./components/footer/BottomNav.jsx";
 
 const App = () => {
     return (
-
-        <HashRouter>
-            <DataProv
-                ider>
                 <Wrapper>
                     <ResponsiveAppBar/>
                     <SimpleContainer>
-                        <Routes>
-                            <Route path="/" element={<BasicGrid/>}/>
-                            <Route path="/home" element={<Home/>}/>
-                            <Route path="/about" element={<About/>}/>
-                            <Route path="/contact" element={<Contact/>}/>
-                            <Route path="/trade" element={<Trade/>}/>
-                            <Route path="/wallet" element={<Wallet/>}/>
-                            {/*<Route path='*' element={<NotFound/>}/>*/}
-                        </Routes>
+                        <Router/>
                     </SimpleContainer>
                     <SimpleBottomNavigation/>
                 </Wrapper>
-            </DataProvider>
-        </HashRouter>
-
 
     );
 };

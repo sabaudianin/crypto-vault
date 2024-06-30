@@ -8,13 +8,18 @@ import ResponsiveAppBar from "./components/header/ResponsiveAppBar.jsx";
 import {DataProvider} from "./components/fetch/DataFetch.jsx";
 import { StyledEngineProvider } from '@mui/material/styles';
 import './index.css'
+import {HashRouter} from "react-router-dom";
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <StyledEngineProvider injectFirst>
-          <App/>
+          <HashRouter>
+              <DataProvider>
+                  <App/>
+              </DataProvider>
+          </HashRouter>
       </StyledEngineProvider>
   </React.StrictMode>,
 )
