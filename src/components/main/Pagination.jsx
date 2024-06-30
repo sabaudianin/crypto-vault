@@ -8,7 +8,9 @@ const PaginationSize = () => {
     const { page, updatePage } = useContext(DataContext);
 
     const handleChange = (e, value) => {
+        console.log(e,value)
         updatePage(value)};
+
     return (
         <Stack spacing={2} >
             <Pagination
