@@ -10,8 +10,8 @@ import NotFound from '../main/NotFound.jsx' ;
 import Trade from '../main/Trade.jsx'
 import BasicGrid from "../main/Dashboard.jsx";
 import Wallet from '../main/Wallet.jsx'
-import SignUpForm from "../signUp/SignUp.jsx";
-import LoginForm from '../signUp/Login.jsx'
+import SignUpForm from "../account/SignUp.jsx";
+import LoginForm from '../account/Login.jsx'
 
 const Router = () => {
     return (
