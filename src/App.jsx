@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import Router from './components/router/Router.jsx'
 import Wrapper from "./components/layouts/Wrapper.jsx";
 import ResponsiveAppBar from "./components/header/ResponsiveAppBar.jsx";
@@ -9,17 +10,11 @@ import SimpleBottomNavigation from "./components/footer/BottomNav.jsx";
 const App = () => {
     return (
         <Wrapper>
-
-                <ResponsiveAppBar/>
-
+            <ResponsiveAppBar/>
             <SimpleContainer>
-
-                    <Router/>
-
+                <Router/>
             </SimpleContainer>
-
-                <SimpleBottomNavigation/>
-
+            <SimpleBottomNavigation/>
         </Wrapper>
 
     );

@@ -1,17 +1,12 @@
 import * as React from 'react';
-
 import {styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-
 import PaginationSize from './Pagination.jsx';
-
-import {DataContext} from '../fetch/DataFetch.jsx';
+import {DataContext} from '../api/DataFetch.jsx';
 import {useContext} from 'react';
 
 const StyledBox = styled(Box)({
@@ -42,14 +37,14 @@ const Item = styled(Paper)(({theme}) => ({
 const BasicGrid = () => {
     const {data, loading, error} = useContext(DataContext);
 
-    // if (loading) return (
-    //     <div>....Loading...Please Wait...</div>);
+    if (loading) return (
+        <div>....Loading...Please Wait...</div>);
     if (error) return (
         <div>Error: {error.message}</div>)
 
     return (
         <StyledBox>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{flexWrap: 'wrap'}}>
                 <Grid item xs={12}>
                     <Item>
                         <p>Total Balance:</p>
@@ -71,16 +66,20 @@ const BasicGrid = () => {
 
                 <Grid item xs={12}>
                     <Item spacing={3}>Current Price:</Item>
-                    {loading
-                        ? <div>....Loading...Please Wait...</div>
-                        : <Stack spacing={2}>
-                            {data.map(currency => (
-                                <Item key={currency.id}>{currency.name}-${currency.current_price.toFixed(2)}</Item>
-                            ))}
-                        </Stack>
-                    }
-
                 </Grid>
+                {/*{loading*/}
+                {/*    ? (<Grid sx={{display: 'flex', alignItems: 'center', justifyContent: 'center',textAlign:'center'}}>*/}
+                {/*        ....Loading...Please Wait...*/}
+                {/*    </Grid>)*/}
+                {/*    : (*/}
+                {data.map(currency => (
+                            <Grid item key={currency.id} xs={12} sm={6}>
+                                <Item>{currency.name}-${currency.current_price.toFixed(2)}</Item>
+                            </Grid>
+                        ))}
+                    {/*)}*/}
+
+
                 <StyledGrid>
                     <div>
                         <PaginationSize/>

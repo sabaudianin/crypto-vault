@@ -21,6 +21,7 @@ const StyledBottomNavigation = styled(BottomNavigation)({
     background: 'inherit',
     position: 'fixed',
     bottom: '2vh',
+    left:0,
     width: '100%',
 
 
@@ -37,7 +38,7 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)({
     },
     '& .MuiBottomNavigationAction-label': {
         fontFamily: 'inherit',
-        fontWeight: 700,
+        fontWeight: 500,
 
     },
 })

@@ -17,12 +17,12 @@ const DataProvider = ({children}) => {
         const params = {
             vs_currency: 'usd',
             order: 'market_cap_desc',
-            per_page: 10,
+            per_page: 20,
             page: page,
             sparkline: true,
             price_change_percentage: '24h'
         };
-        console.log('Update Danych w funkcji fetch data')
+        console.log('Update Danych w funkcji api data')
 
         axios.get(API, {params})
             .then(response => {
@@ -41,7 +41,7 @@ const DataProvider = ({children}) => {
 
         const intervalId = setInterval(() => {
             fetchData(page);
-        }, 60000);
+        }, 600000);
 
         return () => clearInterval(intervalId);
     }, [page]);

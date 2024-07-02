@@ -17,6 +17,7 @@ const RetroContainer = styled(Box)({
     textShadow: '0 0 0.5rem',
     boxShadow: 'inset 0 0 2rem',
     background: 'linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%)',
+
     animation: 'crtAnimation 100s linear infinite',
     backgroundSize: '100% 80%',
     '@keyframes crtAnimation': {

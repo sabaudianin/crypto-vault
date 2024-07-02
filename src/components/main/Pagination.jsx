@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {DataContext} from '../fetch/DataFetch';
+import {DataContext} from '../api/DataFetch';
 
 import {styled} from '@mui/system';
 import Pagination from '@mui/material/Pagination';
@@ -10,6 +10,7 @@ const StyledStack=styled(Stack)({
     justifyContent:'center',
     width:'100%',
     fontWeight: 400,
+    marginTop:'20px',
     '& .MuiPaginationItem-root': {
         color: 'inherit',
         fontFamily: 'inherit',
