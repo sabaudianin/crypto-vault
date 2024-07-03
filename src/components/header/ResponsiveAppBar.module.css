@@ -1,6 +1,6 @@
 .header__appBar {
     background: linear-gradient(124deg, rgba(185, 191, 24, 1) 63%, rgba(79, 75, 12, 1) 70%);
-    /*position:static;*/
+    /**/
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +10,7 @@
 .header__logo {
     margin-right: 16px;
     display: none;
-
+    position:static;
     font-weight: 700;
     letter-spacing: .4rem;
     color: inherit;

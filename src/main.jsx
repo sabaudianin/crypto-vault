@@ -13,9 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <StyledEngineProvider injectFirst>
             <HashRouter>
                 <DataProvider>
-
                     <App/>
-
                 </DataProvider>
             </HashRouter>
         </StyledEngineProvider>

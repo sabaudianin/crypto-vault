@@ -8,7 +8,8 @@ const RetroContainer = styled(Box)({
     height: '98vh',
     display: 'grid',
     gridTemplateRows: 'auto 1fr auto',
-    overflow: 'auto',
+
+    overflowY: 'auto',
     padding: '0.5rem',
     border: '2px solid var(--primary-color)',
     color: 'var(--primary-color)',

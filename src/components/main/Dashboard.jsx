@@ -10,14 +10,16 @@ import {DataContext} from '../api/DataFetch.jsx';
 import {useContext} from 'react';
 
 const StyledBox = styled(Box)({
-    paddingTop: '40px',
+    // paddingTop: '40px',
     flexGrow: 1,
+    marginTop:20,
 })
 
 const StyledGrid = styled(Grid)({
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
+
 })
 
 
@@ -44,7 +46,7 @@ const BasicGrid = () => {
 
     return (
         <StyledBox>
-            <Grid container spacing={2} sx={{flexWrap: 'wrap'}}>
+            <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Item>
                         <p>Total Balance:</p>
