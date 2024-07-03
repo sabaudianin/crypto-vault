@@ -30,11 +30,8 @@ const StyledBottomNavigation = styled(BottomNavigation)({
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)({
     color: 'yellow',
-
-
     '&.Mui-selected': {
         color: 'rgba(196,143,8,1)',
-
     },
     '& .MuiBottomNavigationAction-label': {
         fontFamily: 'inherit',
@@ -62,7 +59,7 @@ export default function SimpleBottomNavigation() {
                         label="DASHBOARD"
                         icon={<GridViewIcon/>}
                         component={Link}
-                        to="/"
+                        to="/dashboard"
                     />
                     <StyledBottomNavigationAction
                         label="TRADE"

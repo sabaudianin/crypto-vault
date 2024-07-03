@@ -5,7 +5,7 @@ import Logo from './logo.jsx';
 import {styled} from '@mui/system';
 import Container from '@mui/material/Container';
 
-export default function SimpleContainer({children,style}) {
+export default function SimpleContainer({children}) {
 
     // const [showLogo, setShowLogo] = useState(true);
     //
@@ -18,17 +18,20 @@ export default function SimpleContainer({children,style}) {
     // }, []);
 
     const StyledContainer=styled(Container)({
+
         overflowY: 'auto' ,
         marginBottom:'8vh',
+        marginTop:'.5vh',
         display:'flex',
         justifyContent:'center',
-        alignItems:'center'
+        // alignItems:'center',
+
 
     })
 
     return (
         <React.Fragment>
-            <StyledContainer maxWidth="xl" style={style}>
+            <StyledContainer maxWidth="xl" >
                 {/*{showLogo && <Logo />}*/}
                 {children}
             </StyledContainer>
