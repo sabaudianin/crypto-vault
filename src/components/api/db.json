@@ -1,3 +1,11 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "f29f",
+      "firstName": "Rafal",
+      "lastName": "Bob",
+      "email": "bob@op.pl",
+      "password": "123"
+    }
+  ]
 }

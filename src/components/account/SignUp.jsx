@@ -1,5 +1,5 @@
-import * as React from 'react';
-
+import React, {useState} from 'react';
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -12,14 +12,43 @@ import {styled} from '@mui/system';
 
 
 const SignUpForm = () => {
+    const [form, setForm] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    })
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setForm((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            };
+        });
+    };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        console.log(form);
+        const user = {
+            firstName: form.firstName,
+            lastName: form.lastName,
+            email: form.email,
+            password: form.password,
+        }
+
+        axios.post('http://localhost:3000/users', user)
+            .then(response => {
+                console.log('Dane wysłane pomyślnie:', response.data);
+
+            })
+            .catch(error => {
+                console.error('Błąd podczas wysyłania danych:', error);
+
+            });
     };
     return (
         <Container>
@@ -37,18 +66,24 @@ const SignUpForm = () => {
                                              id="firstName"
                                              label="First Name"
                                              variant="outlined"
+                                             value={form.firstName}
+                                             onChange={handleChange}
                             />
 
                             <StyledTextField required fullWidth
                                              id="lastName"
                                              label="Last Name"
                                              name="lastName"
+                                             value={form.lastName}
+                                             onChange={handleChange}
                             />
 
                             <StyledTextField required fullWidth
                                              id="email"
                                              label="Email Address"
                                              name="email"
+                                             value={form.email}
+                                             onChange={handleChange}
                             />
 
                             <StyledTextField required fullWidth
@@ -56,10 +91,12 @@ const SignUpForm = () => {
                                              label="Password"
                                              type="password"
                                              id="password"
+                                             value={form.password}
+                                             onChange={handleChange}
                             />
 
                             <StyledTextField required fullWidth
-                                             name="password"
+                                             name="repeatPassword"
                                              label="Repeat Password"
                                              type="password"
                                              id="repeatPassword"
