@@ -13,22 +13,29 @@ import Wallet from '../main/Wallet.jsx'
 import SignUpForm from "../account/SignUp.jsx";
 import LoginForm from '../account/Login.jsx'
 
-const Router = () => {
+const Router = ({isLogged}) => {
     return (
-
-
-                <Routes>
-                    <Route path="/" element={<LoginForm/>}/>
+        <Routes>
+            {isLogged ? (
+                <>
+                    <Route path="/" element={<BasicGrid/>}/>
                     <Route path="/home" element={<Home/>}/>
-                    <Route path="/about" element={<LoginForm/>}/>
+                    <Route path="/about" element={<About/>}/>
                     <Route path="/contact" element={<Contact/>}/>
                     <Route path="/trade" element={<Trade/>}/>
                     <Route path="/wallet" element={<Wallet/>}/>
                     <Route path="/signup" element={<SignUpForm/>}/>
                     <Route path="/dashboard" element={<BasicGrid/>}/>
                     <Route path='*' element={<NotFound/>}/>
-                </Routes>
-
+                </>
+            ) : (
+                <>
+                    <Route path="/" element={<LoginForm/>}/>
+                    <Route path="/signup" element={<SignUpForm/>}/>
+                    <Route path='*' element={<NotFound/>}/>
+                </>
+            )}
+        </Routes>
     );
 };
 

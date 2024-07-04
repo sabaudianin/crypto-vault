@@ -5,7 +5,7 @@ import axios from 'axios';
 //Context Initialization
 const DataContext = createContext();
 
-//Create Wrapper Provider
+//Create Wrapper Provider set State to all components
 const DataProvider = ({children}) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);

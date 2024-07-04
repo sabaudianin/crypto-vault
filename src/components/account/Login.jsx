@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 import SignUpButton from "./SignUpButton.jsx";
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -93,6 +93,9 @@ const LoginForm = () => {
                     <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
                     <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
                 </Box>
+                {isLogged && <Box>
+                    WITAJ HODLERZE :)
+                </Box>}
             </StyledBox>
         </Container>
 
