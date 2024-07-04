@@ -1,4 +1,6 @@
-import * as React from 'react';
+import React, {useState} from 'react';
+
+
 import SignUpButton from "./SignUpButton.jsx";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,47 +14,63 @@ import {styled} from '@mui/system';
 
 const LoginForm = () => {
 
+    const [isLogged, setIsLogged] = useState(false);
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
             email: data.get('email'), password: data.get('password'),
         });
+        setIsLogged(true)
     };
+
     return (
-        <Container>
-            <StyledBox>
-                <StyledTypography component="h2" variant="h3">
-                    Log In
-                </StyledTypography>
+        isLogged
+            ? (
+                <Container>
+                    <StyledBox>
+                        <StyledTypography component="h2" variant="h3">
+                            WITAJ HODLerze :)
+                        </StyledTypography>
+                    </StyledBox>
+                </Container>
+            )
+            : (
+                <Container >
+                    <StyledBox>
 
-                <Box component='form' noValidate onSubmit={handleSubmit}>
-                    <GridContainer container>
-                        <GridItems item xs={12} sm={6}>
-                            <StyledTextField required fullWidth
-                                             id="email"
-                                             label="Email Address"
-                                             name="loginEmail"
-                            />
+                        <StyledTypography component="h2" variant="h3">
+                            Log In
+                        </StyledTypography>
 
-                            <StyledTextField required fullWidth
-                                             name="password"
-                                             label="Password"
-                                             type="password"
-                                             id="loginPassword"
-                            />
-                            <StyledButton type="submit" fullWidth variant="contained">
-                                Log In
-                            </StyledButton>
+                        <Box component='form' noValidate onSubmit={handleSubmit}>
+                            <GridContainer container>
+                                <GridItems item xs={12} sm={6}>
+                                    <StyledTextField required fullWidth
+                                                     id="email"
+                                                     label="Email Address"
+                                                     name="loginEmail"
+                                    />
 
-
-                        </GridItems>
-                    </GridContainer>
-                </Box>
-                <SignUpButton/>
-            </StyledBox>
-
-        </Container>)
+                                    <StyledTextField required fullWidth
+                                                     name="password"
+                                                     label="Password"
+                                                     type="password"
+                                                     id="loginPassword"
+                                    />
+                                    <StyledButton type="submit" fullWidth variant="contained">
+                                        Log In
+                                    </StyledButton>
+                                </GridItems>
+                            </GridContainer>
+                        </Box>
+                        <SignUpButton/>
+                    </StyledBox>
+                </Container>
+            )
+    )
 }
 
 //STYLES

@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import PaginationSize from './Pagination.jsx';
-import {DataContext} from '../api/DataFetch.jsx';
+import {DataContext} from '../../../database/DataFetch.jsx';
 import {useContext} from 'react';
 
 const StyledBox = styled(Box)({

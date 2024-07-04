@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -17,7 +18,9 @@ const SignUpForm = () => {
         lastName: '',
         email: '',
         password: '',
+        repeatPassword: ''
     })
+    const [errors, setErrors] = useState([]);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -29,10 +32,28 @@ const SignUpForm = () => {
         });
     };
 
-
+// Funkcja robi 3 rzeczy , podzielic na 3 funkcje
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(form);
+//VALIDATION
+        if (form.firstName.length < 2) {
+            setErrors(prev => [...prev, 'Imie musi byc dłuższe niż 2 znaki'])
+        }
+        if (form.email.length <= 5) {
+            setErrors(prev => [...prev, 'Email musi byc dłuższy niż 5 znaków'])
+        }
+        if (!(form.email.includes("@") && form.email.includes(".") && form.email.length > 5)) {
+            setErrors(prev => [...prev, 'Niepoprawny adres Email'])
+        }
+
+        if (!(form.password === form.repeatPassword && form.password.length > 0 && form.repeatPassword.length > 0)) {
+            setErrors(prev => [...prev, 'Hasła nie sa takie same'])
+        }
+        if (!(form.password.length > 5)) {
+            setErrors(prev => [...prev, 'Hasło jest za krótkie,min 5 znaków'])
+        }
+        // Object
         const user = {
             firstName: form.firstName,
             lastName: form.lastName,
@@ -40,16 +61,34 @@ const SignUpForm = () => {
             password: form.password,
         }
 
-        axios.post('http://localhost:3000/users', user)
-            .then(response => {
-                console.log('Dane wysłane pomyślnie:', response.data);
 
+        axios.get(`http://localhost:3000/users?email=${form.email}`)
+            .then(response => {
+                if (response.data.length > 0) {
+                    setErrors(prevErrors => [...prevErrors, 'Email już istnieje']);
+                }
             })
             .catch(error => {
-                console.error('Błąd podczas wysyłania danych:', error);
-
+                console.error('Błąd podczas sprawdzania emaila:', error);
             });
+
+        if (!errors.length) {
+            axios.post('http://localhost:3000/users', user)
+                .then(response => {
+                    console.log('Dane wysłane pomyślnie:', response.data);
+
+                })
+                .catch(error => {
+                    console.error('Błąd podczas wysyłania danych:', error);
+
+                });
+        } else {
+            console.log(errors)
+        }
+        setErrors([])
     };
+
+
     return (
         <Container>
             <StyledBox>
@@ -99,7 +138,9 @@ const SignUpForm = () => {
                                              name="repeatPassword"
                                              label="Repeat Password"
                                              type="password"
-                                             id="repeatPassword"
+                                             id="RepeatPassword"
+                                             value={form.repeatPassword}
+                                             onChange={handleChange}
                             />
 
                             <StyledFormControlLabel
@@ -110,8 +151,11 @@ const SignUpForm = () => {
                             <StyledButton type="submit" fullWidth variant="contained">
                                 Sign Up
                             </StyledButton>
-
+                            <Box>
+                                <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                            </Box>
                         </GridItems>
+
                     </GridContainer>
                 </Box>
             </StyledBox>

@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": "f29f",
+      "firstName": "Rafal",
+      "lastName": "Bob",
+      "email": "bob@op.pl",
+      "password": "123"
+    },
+    {
+      "id": "f473",
+      "firstName": "Rafal",
+      "lastName": "Bob",
+      "email": "bob@op.pl",
+      "password": "123"
+    },
+    {
+      "id": "8157",
+      "firstName": "radfsadgasf",
+      "lastName": "sdasdas",
+      "email": "bob@op.pl",
+      "password": "123"
+    },
+    {
+      "id": "0036",
+      "firstName": "but",
+      "lastName": "ala",
+      "email": "bob@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "581d",
+      "firstName": "but",
+      "lastName": "ala",
+      "email": "boba@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "5f00",
+      "firstName": "butelka",
+      "lastName": "ala",
+      "email": "boba@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "3f4f",
+      "firstName": "stacy",
+      "lastName": "ztacy",
+      "email": "majal@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "5637",
+      "firstName": "stacy",
+      "lastName": "ztacy",
+      "email": "majal@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "2ad0",
+      "firstName": "stacy",
+      "lastName": "ztacy",
+      "email": "pupa@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "8114",
+      "firstName": "stacy",
+      "lastName": "ztacy",
+      "email": "pupa@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "17a2",
+      "firstName": "stacy",
+      "lastName": "ztacy",
+      "email": "pupa@op.pl",
+      "password": "12345"
+    },
+    {
+      "id": "ef8f",
+      "firstName": "st",
+      "lastName": "zt",
+      "email": "ttt@op.pl",
+      "password": "12"
+    },
+    {
+      "id": "eec6",
+      "firstName": "st",
+      "lastName": "zt",
+      "email": "ttt@op.pl",
+      "password": "12"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import Logo from './logo.jsx';
 import {styled} from '@mui/system';
 import Container from '@mui/material/Container';
 
-export default function SimpleContainer({children}) {
+ const SimpleContainer= ({children})=> {
 
     // const [showLogo, setShowLogo] = useState(true);
     //
@@ -38,3 +38,6 @@ export default function SimpleContainer({children}) {
         </React.Fragment>
     );
 }
+
+
+export default SimpleContainer;

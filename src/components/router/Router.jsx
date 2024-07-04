@@ -15,7 +15,7 @@ import LoginForm from '../account/Login.jsx'
 
 const Router = () => {
     return (
-        <main>
+
 
                 <Routes>
                     <Route path="/" element={<LoginForm/>}/>
@@ -28,11 +28,6 @@ const Router = () => {
                     <Route path="/dashboard" element={<BasicGrid/>}/>
                     <Route path='*' element={<NotFound/>}/>
                 </Routes>
-
-
-
-        </main>
-
 
     );
 };

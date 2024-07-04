@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {styled} from '@mui/system';
 
@@ -8,8 +8,13 @@ const StyledButton =styled(Button)({
 })
 
 const SignUpButton = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/signup');
+    };
     return (
-        <StyledButton component={Link} to="/signUp" variant="inherit">
+        <StyledButton  onClick={handleClick} variant="inherit">
             {"Don't have an account? Sign Up"}
         </StyledButton>
     );

@@ -1,7 +1,21 @@
 import React from 'react';
-import { styled } from '@mui/system';
+import {styled} from '@mui/system';
 import Box from '@mui/material/Box';
+import Login from '../account/Login';
 
+
+const Wrapper = ({children}) => {
+    return (
+        <RetroContainer>
+
+                {children}
+
+
+        </RetroContainer>
+    );
+};
+
+//STYLES
 
 const RetroContainer = styled(Box)({
     width: '98vw',
@@ -30,14 +44,5 @@ const RetroContainer = styled(Box)({
         }
     },
 });
-
-
-const Wrapper = ({children}) => {
-    return (
-        <RetroContainer>
-            {children}
-        </RetroContainer>
-    );
-};
 
 export default Wrapper;
