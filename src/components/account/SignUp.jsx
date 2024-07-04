@@ -18,74 +18,94 @@ const SignUpForm = () => {
         lastName: '',
         email: '',
         password: '',
-        repeatPassword: ''
+        repeatPassword: '',
+        condition: false,
     })
     const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState([])
 
+//Handling 'inputs'
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        const {name, value, type, checked} = e.target;
         setForm((prevState) => {
             return {
                 ...prevState,
-                [name]: value,
+                [name]: type === 'checkbox' ? checked : value,
             };
         });
     };
 
-// Funkcja robi 3 rzeczy , podzielic na 3 funkcje
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(form);
 //VALIDATION
+    const validationForm = () => {
+
+        let formErrors = [];
+        let isValid = true;
+
         if (form.firstName.length < 2) {
-            setErrors(prev => [...prev, 'Imie musi byc dłuższe niż 2 znaki'])
+            formErrors.push('Imie musi byc dłuższe niż 2 znaki');
+            isValid = false;
         }
         if (form.email.length <= 5) {
-            setErrors(prev => [...prev, 'Email musi byc dłuższy niż 5 znaków'])
+            formErrors.push('Email musi byc dłuższy niż 5 znaków');
+            isValid = false;
         }
         if (!(form.email.includes("@") && form.email.includes(".") && form.email.length > 5)) {
-            setErrors(prev => [...prev, 'Niepoprawny adres Email'])
+            formErrors.push('Niepoprawny adres Email');
+            isValid = false;
         }
 
         if (!(form.password === form.repeatPassword && form.password.length > 0 && form.repeatPassword.length > 0)) {
-            setErrors(prev => [...prev, 'Hasła nie sa takie same'])
+            formErrors.push('Hasła nie sa takie same');
+            isValid = false;
         }
         if (!(form.password.length > 5)) {
-            setErrors(prev => [...prev, 'Hasło jest za krótkie,min 5 znaków'])
+            formErrors.push('Hasło jest za krótkie,min 5 znaków');
+            isValid = false;
         }
-        // Object
-        const user = {
-            firstName: form.firstName,
-            lastName: form.lastName,
-            email: form.email,
-            password: form.password,
+        if (!form.condition ){
+            formErrors.push('Musisz zaakceptowac warunki');
+            isValid = false;
         }
+        setErrors(formErrors)
+        return isValid
+    }
 
+// Handling Button
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors([]);
+        setSuccess([]);
+        const isValid = validationForm();
 
-        axios.get(`http://localhost:3000/users?email=${form.email}`)
-            .then(response => {
-                if (response.data.length > 0) {
-                    setErrors(prevErrors => [...prevErrors, 'Email już istnieje']);
-                }
-            })
-            .catch(error => {
-                console.error('Błąd podczas sprawdzania emaila:', error);
-            });
+        if (isValid) {
+            const user = {
+                firstName: form.firstName,
+                lastName: form.lastName,
+                email: form.email,
+                password: form.password,
+            }
 
-        if (!errors.length) {
-            axios.post('http://localhost:3000/users', user)
+            axios.get(`http://localhost:3000/users?email=${form.email}`)
                 .then(response => {
-                    console.log('Dane wysłane pomyślnie:', response.data);
-
+                    if (response.data.length > 0) {
+                        setErrors(prev => [...prev, 'Email już istnieje']);
+                    } else {
+                        axios.post('http://localhost:3000/users', user)
+                            .then(response => {
+                                console.log('Dane wysłane pomyślnie:', response.data);
+                                setSuccess(prev => [...prev, 'Konto utworzone,możesz się zalogować'])
+                            })
+                            .catch(error => {
+                                console.error('Błąd podczas wysyłania danych:', error);
+                                setErrors(prev => [...prev, 'Błąd podczas wysyłania danych:'])
+                            });
+                    }
                 })
                 .catch(error => {
-                    console.error('Błąd podczas wysyłania danych:', error);
-
+                    console.error('Błąd podczas sprawdzania emaila:', error);
+                    setErrors(prev => [...prev, 'Błąd podczas wysyłania danych:'])
                 });
-        } else {
-            console.log(errors)
         }
-        setErrors([])
     };
 
 
@@ -144,7 +164,8 @@ const SignUpForm = () => {
                             />
 
                             <StyledFormControlLabel
-                                control={<StyledCheckbox value="allowExtraEmails"/>}
+                                control={<StyledCheckbox value="condition" name="condition"
+                                                         checked={form.condition} onChange={handleChange}/>}
                                 label="I want to receive inspiration, marketing promotions and updates via email."
                             />
 
@@ -153,6 +174,7 @@ const SignUpForm = () => {
                             </StyledButton>
                             <Box>
                                 <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                                <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
                             </Box>
                         </GridItems>
 

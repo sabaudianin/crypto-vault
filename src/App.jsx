@@ -9,7 +9,7 @@ import SimpleContainer from "./components/layouts/Container.jsx";
 import SimpleBottomNavigation from "./components/footer/BottomNav.jsx";
 
 const App = () => {
-    const [isLogged, setIsLogged] = useState(false);
+    // const [isLogged, setIsLogged] = useState(false);
     return (
         <Wrapper>
 

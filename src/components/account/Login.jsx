@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import axios from 'axios';
 
 import SignUpButton from "./SignUpButton.jsx";
 import Button from '@mui/material/Button';
@@ -15,61 +15,87 @@ import {styled} from '@mui/system';
 const LoginForm = () => {
 
     const [isLogged, setIsLogged] = useState(false);
+    const [form, setForm] = useState({
+        firstName: '',
+        email: '',
+        password: '',
 
+    })
+    const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState([])
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setForm((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            };
+        });
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'), password: data.get('password'),
-        });
-        setIsLogged(true)
+        setErrors([]);
+        setSuccess([]);
+
+
+        const API = `http://localhost:3000/users?email=${form.email}&password=${form.password}`
+        axios.get(API)
+            .then(response => {
+                if (response.data.length > 0) {
+                    setIsLogged(true)
+                    setSuccess("ZALOGOWANO POMYŚLNIE")
+                } else {
+                    setErrors(prev => [...prev, 'Niepoprawne Dane logowania'])
+                }
+            })
+            .catch(error => {
+                console.log('bład logowania', error);
+                setErrors(prev => [...prev, 'Błąd podczas próby logowania'])
+            })
     };
 
     return (
-        isLogged
-            ? (
-                <Container>
-                    <StyledBox>
-                        <StyledTypography component="h2" variant="h3">
-                            WITAJ HODLerze :)
-                        </StyledTypography>
-                    </StyledBox>
-                </Container>
-            )
-            : (
-                <Container >
-                    <StyledBox>
 
-                        <StyledTypography component="h2" variant="h3">
-                            Log In
-                        </StyledTypography>
+        <Container>
+            <StyledBox>
 
-                        <Box component='form' noValidate onSubmit={handleSubmit}>
-                            <GridContainer container>
-                                <GridItems item xs={12} sm={6}>
-                                    <StyledTextField required fullWidth
-                                                     id="email"
-                                                     label="Email Address"
-                                                     name="loginEmail"
-                                    />
+                <StyledTypography component="h2" variant="h3">
+                    Log In
+                </StyledTypography>
 
-                                    <StyledTextField required fullWidth
-                                                     name="password"
-                                                     label="Password"
-                                                     type="password"
-                                                     id="loginPassword"
-                                    />
-                                    <StyledButton type="submit" fullWidth variant="contained">
-                                        Log In
-                                    </StyledButton>
-                                </GridItems>
-                            </GridContainer>
-                        </Box>
-                        <SignUpButton/>
-                    </StyledBox>
-                </Container>
-            )
+                <Box component='form' noValidate onSubmit={handleSubmit}>
+                    <GridContainer container>
+                        <GridItems item xs={12} sm={6}>
+                            <StyledTextField required fullWidth
+                                             id="email"
+                                             label="Email Address"
+                                             name="loginEmail"
+                                             onChange={handleChange}
+                            />
+
+                            <StyledTextField required fullWidth
+                                             name="password"
+                                             label="Password"
+                                             type="password"
+                                             id="loginPassword"
+                                             onChange={handleChange}
+                            />
+                            <StyledButton type="submit" fullWidth variant="contained">
+                                Log In
+                            </StyledButton>
+                        </GridItems>
+                    </GridContainer>
+                </Box>
+                <SignUpButton/>
+                <Box>
+                    <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                    <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                </Box>
+            </StyledBox>
+        </Container>
+
     )
 }
 
