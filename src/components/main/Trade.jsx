@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
-import {DataGrid} from '@mui/x-data-grid';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton} from '@mui/material';
 import {DataContext} from '../../../database/DataFetch.jsx';
+import PaginationSize from './Pagination.jsx';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { IconButton } from '@mui/material';
+import {styled} from '@mui/material/styles';
 
 const Trade = () => {
     const {data, loading, error} = useContext(DataContext);
@@ -14,71 +15,62 @@ const Trade = () => {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
-
-
-    const columns = [
-        {field: 'id', headerName: 'ID', flex: 1, minWidth: 30},
-        {field: 'name', headerName: 'Name', flex: 4, minWidth: 150},
-        {field: 'price', headerName: 'Price', flex: 3, minWidth: 150},
-        {
-            field: 'buy',
-            headerName: 'Buy',
-            flex: 1,
-            minWidth: 100,
-            renderCell: (params) => (
-                <IconButton color="inherit" >
-                    <ShoppingCartIcon />
-                </IconButton>
-            ),
-        },
-    ];
-
-    const rows = data.map((item, index) => ({
-        id: index + 1,
-        name: item.name,
-        price: item.current_price,
-
-    }));
-
+    const handleBuy = (price) => {
+        console.log(`Kup ${price}`);
+    };
     return (
-        <div style={{width: '100%'}}>
-            <div style={{height: '100%', width: '100%', color: 'white',backgroundColor: 'black'}}>
-                <DataGrid rows={rows} columns={columns} sx={{
-                    color: 'var(--primary-color)', backgroundColor: 'black',
-                    '& .MuiDataGrid-root': {
-                        background: 'pink',
-                        color:'white'
-                    },
-
-                    '&.MuiDataGrid-root .MuiDataGrid-container--top [role=row]': {
-                        backgroundColor: 'cornflowerblue'},
-
-                    '& .MuiDataGrid-footerContainer': {
-                        color: 'inherit',
-                    },
-
-
-                    '& .MuiTablePagination-root': {
-                        color: 'var(--primary-color)',
-                    },
-                    '& .MuiTablePagination-actions': {
-                        color:'white',
-                    }
-                }}/>
-            </div>
-        </div>
-    );
+        <StyledTableContainer component={Paper}>
+            <Table sx={{minWidth: 350}} aria-label="simple table">
+                <TableHead>
+                    <TableRow size='xs'>
+                        <StyledTableCell>ID</StyledTableCell>
+                        <StyledTableCell>Name</StyledTableCell>
+                        <StyledTableCell>Price</StyledTableCell>
+                        <StyledTableCell>Buy</StyledTableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {data.map((row, index) => (
+                        <TableRow key={row.id}>
+                            <StyledTableCell>{index + 1}</StyledTableCell>
+                            <StyledTableCell>{row.name}</StyledTableCell>
+                            <StyledTableCell>{row.current_price}</StyledTableCell>
+                            <StyledTableCell>
+                                <StyledIconButton onClick={() => handleBuy(row.current_price)}>
+                                    <ShoppingCartIcon/>
+                                </StyledIconButton>
+                            </StyledTableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+            <PaginationSize/>
+        </StyledTableContainer>
+    )
 };
 
 
-// const Item = styled(Paper)(({ theme }) => ({
-//     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//     ...theme.typography.body2,
-//     padding: theme.spacing(1),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-// }));
-//
+const StyledTableContainer = styled(TableContainer)({
+    backgroundColor: 'inherit',
+    color: 'var(--primary-color)',
+    fontFamily: 'inherit',
 
+});
 
+const StyledTableCell = styled(TableCell)({
+    color: 'var(--primary-color)',
+    fontFamily: 'inherit',
+    padding: 0,
+    textAlign: 'center',
+});
+
+const StyledIconButton = styled(IconButton)( {
+    color: 'var(--primary-color)',
+    '&:hover': {
+        color: 'var(--secondary-color)',
+    },
+    '&:active':{
+        color:'var(--tertiary-color)',
+    }
+})
 export default Trade;
