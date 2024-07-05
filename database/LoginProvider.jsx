@@ -6,7 +6,7 @@ const LoginContext = createContext()
 
 const LoginProvider = ({children}) => {
 
-    const [isLogged, setIsLogged] = useState(false)
+    const [isLogged, setIsLogged] = useState(true)
 
     //Method to update state isLogged
     const login = useCallback(() => {

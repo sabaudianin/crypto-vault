@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {useContext} from 'react';
+import React,{useContext} from 'react';
 
 import {DataContext} from '../../../database/DataFetch.jsx';
 
@@ -12,34 +11,6 @@ import Grid from '@mui/material/Grid';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
-
-
-
-const StyledBox = styled(Box)({
-    // paddingTop: '40px',
-    flexGrow: 1,
-    marginTop:20,
-})
-
-const StyledGrid = styled(Grid)({
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-
-})
-
-
-const Item = styled(Paper)(({theme}) => ({
-    background: 'inherit',
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: 'var(--primary-color)',
-    maskImage: 'linear-gradient(to bottom, #0005 50%, #000 50%)',
-    maskSize: '100% 2px',
-    textShadow: '0 0 0.5rem',
-    border: '1px solid var(--primary-color)',
-    borderRadius: '4px',
-}));
 
 
 const BasicGrid = () => {
@@ -97,5 +68,30 @@ const BasicGrid = () => {
         </StyledBox>
     )
 };
+const StyledBox = styled(Box)({
+    // paddingTop: '40px',
+    flexGrow: 1,
+    marginTop:20,
+})
+
+const StyledGrid = styled(Grid)({
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+
+})
+
+
+const Item = styled(Paper)(({theme}) => ({
+    background: 'inherit',
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: 'var(--primary-color)',
+    maskImage: 'linear-gradient(to bottom, #0005 50%, #000 50%)',
+    maskSize: '100% 2px',
+    textShadow: '0 0 0.5rem',
+    border: '1px solid var(--primary-color)',
+    borderRadius: '4px',
+}));
 
 export default BasicGrid;

@@ -5,22 +5,7 @@ import {styled} from '@mui/system';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-const StyledStack=styled(Stack)({
-    display:'flex',
-    justifyContent:'center',
-    width:'100%',
-    fontWeight: 400,
-    marginTop:'20px',
-    '& .MuiPaginationItem-root': {
-        color: 'inherit',
-        fontFamily: 'inherit',
-        fontWeight: 400,
-        '&.Mui-selected': {
-            backgroundColor: 'rgba(196,143,8,1)',
 
-        },
-    },
-})
 
 const PaginationSize = () => {
     const {page, updatePage} = useContext(DataContext);
@@ -47,4 +32,21 @@ const PaginationSize = () => {
 
     );
 }
+
+const StyledStack=styled(Stack)({
+    display:'flex',
+    justifyContent:'center',
+    width:'100%',
+    fontWeight: 400,
+    marginTop:'20px',
+    '& .MuiPaginationItem-root': {
+        color: 'inherit',
+        fontFamily: 'inherit',
+        fontWeight: 400,
+        '&.Mui-selected': {
+            backgroundColor: 'rgba(196,143,8,1)',
+
+        },
+    },
+})
 export default PaginationSize;

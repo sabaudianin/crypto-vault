@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{useContext} from 'react';
 
 import {Routes, Route} from 'react-router-dom';
-
+import {LoginContext} from '../../../database/LoginProvider.jsx'
 import Home from '../../pages/Home.jsx';
 import About from '../../pages/About.jsx';
 import Contact from '../../pages/Contact.jsx';
@@ -13,7 +13,8 @@ import Wallet from '../main/Wallet.jsx'
 import SignUpForm from "../account/SignUp.jsx";
 import LoginForm from '../account/Login.jsx'
 
-const Router = ({isLogged}) => {
+const Router = () => {
+    const{isLogged} = useContext(LoginContext)
     return (
         <Routes>
             {isLogged ? (
