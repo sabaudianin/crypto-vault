@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -41,7 +41,7 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)({
 })
 
 
-export default function SimpleBottomNavigation() {
+const SimpleBottomNavigation=()=> {
     const [value, setValue] = React.useState(0);
 
     return (
@@ -79,5 +79,5 @@ export default function SimpleBottomNavigation() {
         </footer>
     );
 }
-
+  export default SimpleBottomNavigation;
 

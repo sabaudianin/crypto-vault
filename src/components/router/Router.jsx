@@ -8,7 +8,7 @@ import Contact from '../../pages/Contact.jsx';
 
 import NotFound from '../main/NotFound.jsx' ;
 import Trade from '../main/Trade.jsx'
-import BasicGrid from "../main/Dashboard.jsx";
+import {BasicGrid} from "../main/Dashboard.jsx";
 import Wallet from '../main/Wallet.jsx'
 import SignUpForm from "../account/SignUp.jsx";
 import LoginForm from '../account/Login.jsx'

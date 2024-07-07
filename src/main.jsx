@@ -9,18 +9,19 @@ import {LoginProvider} from '../database/LoginProvider.jsx'
 import {StyledEngineProvider} from '@mui/material/styles';
 
 import './index.css'
+import {WalletProvider} from "../database/WalletProvider.jsx";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <StyledEngineProvider injectFirst>
-            <HashRouter>
-             <LoginProvider>
+    <StyledEngineProvider injectFirst>
+        <HashRouter>
+            <LoginProvider>
                 <DataProvider>
-                    <App/>
+                    <WalletProvider>
+                        <App/>
+                    </WalletProvider>
                 </DataProvider>
-             </LoginProvider>
-            </HashRouter>
-        </StyledEngineProvider>
-    </React.StrictMode>,
+            </LoginProvider>
+        </HashRouter>
+    </StyledEngineProvider>
 )

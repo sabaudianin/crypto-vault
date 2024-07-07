@@ -9,6 +9,7 @@
     --background-color: #111;
     scrollbar-color: var(--primary-color) var(--secondary-color);
     font-size: clamp(24px, 3vw, 30px);
+
 }
 
 * {

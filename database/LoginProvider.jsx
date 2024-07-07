@@ -9,16 +9,16 @@ const LoginProvider = ({children}) => {
     const [isLogged, setIsLogged] = useState(true)
 
     //Method to update state isLogged
-    const login = useCallback(() => {
+    const logIn = useCallback(() => {
         setIsLogged(true);
     }, []);
 
-    const logout = useCallback(() => {
+    const logOut = useCallback(() => {
         setIsLogged(false)
     }, []);
 
     return (
-        <LoginContext.Provider value={{isLogged, login, logout}}>
+        <LoginContext.Provider value={{isLogged, logIn,logOut}}>
             {children}
         </LoginContext.Provider>
     )

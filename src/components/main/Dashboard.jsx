@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, {useContext, useMemo, memo} from 'react';
 
 import {DataContext} from '../../../database/DataFetch.jsx';
 
@@ -12,66 +12,64 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 
-
-const BasicGrid = () => {
+const BasicGrid = memo(() => {
     const {data, loading, error} = useContext(DataContext);
+    console.log(data)
 
-    if (loading) return (
-        <div>....Loading...Please Wait...</div>);
-    if (error) return (
-        <div>Error: {error.message}</div>)
+    return useMemo(() => {
+        if (loading) return (
+            <div>....Loading...Please Wait...</div>);
+        if (error) return (
+            <div>Error: {error.message}</div>)
 
-    return (
-        <StyledBox>
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <Item>
-                        <p>Total Balance:</p>
-                        <p>20 000 $</p>
-                    </Item>
+        return (
+            <StyledBox>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Item>
+                            <p>Total Balance:</p>
+                            <p>20 000 $</p>
+                        </Item>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Item>
+                            <p>BUY</p>
+                            <AddCircleOutlineIcon/>
+                        </Item>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Item>
+                            <p>SELL</p>
+                            <RemoveCircleOutlineIcon/>
+                        </Item>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Item spacing={3}>Current Price:</Item>
+                    </Grid>
+
+                    {data.map(currency => (
+                        <Grid item key={currency.id} xs={12} sm={6} md={4} lg={3}>
+                            <Item>{currency.name}-${currency.current_price.toFixed(2)}</Item>
+                        </Grid>
+                    ))}
+
+                    <StyledGrid>
+                        <div>
+                            <PaginationSize/>
+                        </div>
+                    </StyledGrid>
                 </Grid>
-                <Grid item xs={6}>
-                    <Item>
-                        <p>BUY</p>
-                        <AddCircleOutlineIcon/>
-                    </Item>
-                </Grid>
-                <Grid item xs={6}>
-                    <Item>
-                        <p>SELL</p>
-                        <RemoveCircleOutlineIcon/>
-                    </Item>
-                </Grid>
+            </StyledBox>
+        )
+    }, [data, loading, error]);
 
-                <Grid item xs={12}>
-                    <Item spacing={3}>Current Price:</Item>
-                </Grid>
-                {/*{loading*/}
-                {/*    ? (<Grid sx={{display: 'flex', alignItems: 'center', justifyContent: 'center',textAlign:'center'}}>*/}
-                {/*        ....Loading...Please Wait...*/}
-                {/*    </Grid>)*/}
-                {/*    : (*/}
-                {data.map(currency => (
-                            <Grid item key={currency.id} xs={12} sm={6}>
-                                <Item>{currency.name}-${currency.current_price.toFixed(2)}</Item>
-                            </Grid>
-                        ))}
-                    {/*)}*/}
+})
 
-
-                <StyledGrid>
-                    <div>
-                        <PaginationSize/>
-                    </div>
-                </StyledGrid>
-            </Grid>
-        </StyledBox>
-    )
-};
 const StyledBox = styled(Box)({
     // paddingTop: '40px',
     flexGrow: 1,
-    marginTop:20,
+    marginTop: 20,
 })
 
 const StyledGrid = styled(Grid)({
@@ -91,7 +89,11 @@ const Item = styled(Paper)(({theme}) => ({
     maskSize: '100% 2px',
     textShadow: '0 0 0.5rem',
     border: '1px solid var(--primary-color)',
+    cursor:'pointer',
     borderRadius: '4px',
+        '&:hover':{
+            background:'var( --secondary-color)'
+        }
 }));
 
-export default BasicGrid;
+export {BasicGrid,Item};

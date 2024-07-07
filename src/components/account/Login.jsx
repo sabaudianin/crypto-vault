@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import axios from 'axios';
-
+import {LoginContext} from '../../../database/LoginProvider.jsx';
 import SignUpButton from "./SignUpButton.jsx";
 
 import Button from '@mui/material/Button';
@@ -13,8 +13,8 @@ import {styled} from '@mui/system';
 
 
 const LoginForm = () => {
+const {isLogged,logIn,logOut}=useContext(LoginContext)
 
-    const [isLogged, setIsLogged] = useState(false);
     const [form, setForm] = useState({
         firstName: '',
         email: '',
@@ -44,7 +44,7 @@ const LoginForm = () => {
         axios.get(API)
             .then(response => {
                 if (response.data.length > 0) {
-                    setIsLogged(true)
+                    logIn();
                     setSuccess("ZALOGOWANO POMYŚLNIE")
                 } else {
                     setErrors(prev => [...prev, 'Niepoprawne Dane logowania'])
