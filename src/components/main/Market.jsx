@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 
-import {WalletContext} from "../../../database/WalletProvider.jsx";
+import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 
 import {Box, Button, Grid, Typography, Stack, Slider, Input} from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -9,7 +9,7 @@ import {styled} from '@mui/material/styles';
 
 
 const Market = ({coin, onClose}) => {
-    const {basicBank, transactionBasicBank, transactionCryptoBank} = useContext(WalletContext);
+    const {basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext);
     const [amountToTrade, setAmountToTrade] = useState(0);
 
     console.log('Market propsy przekazane', coin, basicBank);
@@ -24,7 +24,7 @@ const Market = ({coin, onClose}) => {
                 price: coin.current_price,
                 date: new Date().toLocaleString()
             }
-            transactionBasicBank(amountFloat);
+            transactionBasicBank(-amountFloat);
             transactionCryptoBank(newTransaction);
             console.log('tranzakcja zrealizowana', coinsToBuy, amountFloat)
         }

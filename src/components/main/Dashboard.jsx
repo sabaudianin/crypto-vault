@@ -1,4 +1,5 @@
 import React, {useContext, useMemo, memo} from 'react';
+import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 
 import {DataContext} from '../../../database/DataFetch.jsx';
 import PaginationSize from './Pagination.jsx';
@@ -13,6 +14,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 const BasicGrid = memo(() => {
     const {data, loading, error} = useContext(DataContext);
+    const {basicBank}=useContext(UserWalletContext);
     console.log(data)
 
     return useMemo(() => {
@@ -27,7 +29,7 @@ const BasicGrid = memo(() => {
                     <Grid item xs={12}>
                         <Item>
                             <p>Total Balance:</p>
-                            <p>20 000 $</p>
+                            <p>{basicBank} $</p>
                         </Item>
                     </Grid>
                     <Grid item xs={6}>

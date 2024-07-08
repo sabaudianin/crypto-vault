@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
+
+import {LoginContext} from '../../../database/LoginProvider.jsx';
 
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -12,35 +14,42 @@ import {styled} from '@mui/system';
 const SimpleBottomNavigation = () => {
     const [value, setValue] = React.useState(0);
 
-    return (<StyledBox>
-        <StyledBottomNavigation
-            showLabels
-            value={value}
-            sx={{fontFamily: 'inherit'}}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
-        >
-            <StyledBottomNavigationAction
-                label="DASHBOARD"
-                icon={<GridViewIcon/>}
-                component={Link}
-                to="/dashboard"
-            />
-            <StyledBottomNavigationAction
-                label="TRADE"
-                icon={<AddCardIcon/>}
-                component={Link}
-                to="/trade"
-            />
-            <StyledBottomNavigationAction
-                label="WALLET"
-                icon={<SavingsIcon/>}
-                component={Link}
-                to="/wallet"
-            />
-        </StyledBottomNavigation>
-    </StyledBox>);
+    const {isLogged} = useContext(LoginContext)
+    return (
+        <StyledBox>
+
+            <StyledBottomNavigation
+                showLabels
+                value={value}
+                sx={{}}
+                onChange={(event, newValue) => {
+                    setValue(newValue);
+                }}
+            >
+                {isLogged && (
+                    <>
+                        <StyledBottomNavigationAction
+                            label="DASHBOARD"
+                            icon={<GridViewIcon/>}
+                            component={Link}
+                            to="/dashboard"
+                        />
+                        <StyledBottomNavigationAction
+                            label="TRADE"
+                            icon={<AddCardIcon/>}
+                            component={Link}
+                            to="/trade"
+                        />
+                        <StyledBottomNavigationAction
+                            label="WALLET"
+                            icon={<SavingsIcon/>}
+                            component={Link}
+                            to="/wallet"
+                        />
+                    </>
+                )}
+            </StyledBottomNavigation>
+        </StyledBox>);
 };
 //Styles
 const StyledBox = styled(Box)({
@@ -48,7 +57,11 @@ const StyledBox = styled(Box)({
 });
 
 const StyledBottomNavigation = styled(BottomNavigation)({
-    background: 'inherit', position: 'fixed', bottom: '2vh', left: 0, width: '100%',
+    background: 'inherit',
+    position: 'fixed',
+    bottom: '2vh', left: 0,
+    width: '100%',
+    fontFamily: 'inherit',
 });
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)({

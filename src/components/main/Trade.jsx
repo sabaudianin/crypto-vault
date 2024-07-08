@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, memo, useState, useEffect } from 'react';
 
 import { DataContext } from '../../../database/DataFetch.jsx';
-import {WalletContext} from "../../../database/WalletProvider.jsx";
+import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 import PaginationSize from './Pagination.jsx';
 import Market from './Market.jsx';
 

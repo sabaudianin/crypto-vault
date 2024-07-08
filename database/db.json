@@ -1,109 +1,66 @@
 {
   "users": [
     {
-      "id": "f29f",
-      "firstName": "Rafal",
-      "lastName": "Bob",
-      "email": "bob@op.pl",
-      "password": "123"
+      "id": "2c84",
+      "firstName": "kasia",
+      "lastName": "basia",
+      "email": "kasia@op.pl",
+      "password": "kasiabasia",
+      "basicBank": 0,
+      "cryptoBank": [
+        {
+          "name": "Bitcoin",
+          "value": 0.45863529244998846,
+          "price": 56437,
+          "date": "8.07.2024, 17:37:41"
+        },
+        {
+          "name": "Polygon",
+          "value": 90669.47493898854,
+          "price": 0.496628,
+          "date": "8.07.2024, 17:37:51"
+        },
+        {
+          "name": "Pepe",
+          "value": 3199889988.9989,
+          "price": 0.00000909,
+          "date": "8.07.2024, 17:37:58"
+        }
+      ]
     },
     {
-      "id": "f473",
-      "firstName": "Rafal",
-      "lastName": "Bob",
-      "email": "bob@op.pl",
-      "password": "123"
-    },
-    {
-      "id": "8157",
-      "firstName": "radfsadgasf",
-      "lastName": "sdasdas",
-      "email": "bob@op.pl",
-      "password": "123"
-    },
-    {
-      "id": "0036",
-      "firstName": "but",
-      "lastName": "ala",
-      "email": "bob@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "581d",
-      "firstName": "but",
-      "lastName": "ala",
-      "email": "boba@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "5f00",
-      "firstName": "butelka",
-      "lastName": "ala",
-      "email": "boba@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "3f4f",
-      "firstName": "stacy",
-      "lastName": "ztacy",
-      "email": "majal@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "5637",
-      "firstName": "stacy",
-      "lastName": "ztacy",
-      "email": "majal@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "2ad0",
-      "firstName": "stacy",
-      "lastName": "ztacy",
-      "email": "pupa@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "8114",
-      "firstName": "stacy",
-      "lastName": "ztacy",
-      "email": "pupa@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "17a2",
-      "firstName": "stacy",
-      "lastName": "ztacy",
-      "email": "pupa@op.pl",
-      "password": "12345"
-    },
-    {
-      "id": "ef8f",
-      "firstName": "st",
-      "lastName": "zt",
-      "email": "ttt@op.pl",
-      "password": "12"
-    },
-    {
-      "id": "eec6",
-      "firstName": "st",
-      "lastName": "zt",
-      "email": "ttt@op.pl",
-      "password": "12"
-    },
-    {
-      "id": "4925",
-      "firstName": "ola",
-      "lastName": "ala",
-      "email": "olaala@op.pl",
-      "password": "123456"
-    },
-    {
-      "id": "5f9c",
-      "firstName": "Rafa",
-      "lastName": "mala",
-      "email": "krrr@op.pl",
-      "password": "rrrrrrrr"
+      "id": "c829",
+      "firstName": "reksio",
+      "lastName": "pies",
+      "email": "reksio@op.pl",
+      "password": "reksio",
+      "basicBank": 73561,
+      "cryptoBank": [
+        {
+          "name": "Ethereum",
+          "value": 2.759442916230959,
+          "price": 3002.78,
+          "date": "8.07.2024, 17:32:53"
+        },
+        {
+          "name": "Lido Staked Ether",
+          "value": 2.0142740158319077,
+          "price": 3004.06,
+          "date": "8.07.2024, 17:33:05"
+        },
+        {
+          "name": "Lido Staked Ether",
+          "value": 2.0142740158319077,
+          "price": 3004.06,
+          "date": "8.07.2024, 17:33:12"
+        },
+        {
+          "name": "Lido Staked Ether",
+          "value": 2.0142740158319077,
+          "price": 3004.06,
+          "date": "8.07.2024, 17:33:12"
+        }
+      ]
     }
   ]
 }

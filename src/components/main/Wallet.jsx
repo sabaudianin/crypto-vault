@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {WalletContext} from "../../../database/WalletProvider.jsx";
+import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 import {Item} from './Dashboard.jsx'
 
 import { styled } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import {Typography,Box,Grid} from'@mui/material'
 
 
 const Wallet = () => {
-    const {basicBank,cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(WalletContext)
+    const {basicBank,cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext)
 
     const handleClick=(item)=>{
         console.log('Sprzedane',item)

@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-import axios from 'axios';
+import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,8 +13,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {styled} from '@mui/system';
 
+import axios from 'axios';
+
 
 const SignUpForm = () => {
+    const navigate = useNavigate();
+    const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState([])
+    const {setUserWallet} = useContext(UserWalletContext);
+
     const [form, setForm] = useState({
         firstName: '',
         lastName: '',
@@ -22,8 +30,6 @@ const SignUpForm = () => {
         repeatPassword: '',
         condition: false,
     })
-    const [errors, setErrors] = useState([]);
-    const [success, setSuccess] = useState([])
 
 //Handling 'inputs'
     const handleChange = (e) => {
@@ -54,7 +60,6 @@ const SignUpForm = () => {
             formErrors.push('Niepoprawny adres Email');
             isValid = false;
         }
-
         if (!(form.password === form.repeatPassword && form.password.length > 0 && form.repeatPassword.length > 0)) {
             formErrors.push('Hasła nie sa takie same');
             isValid = false;
@@ -67,23 +72,26 @@ const SignUpForm = () => {
             formErrors.push('Musisz zaakceptowac warunki');
             isValid = false;
         }
-        setErrors(formErrors)
-        return isValid
+        setErrors(formErrors);
+        return isValid;
     }
 
 // Handling Button
     const handleSubmit = (event) => {
         event.preventDefault();
+        const isValid = validationForm();
         setErrors([]);
         setSuccess([]);
-        const isValid = validationForm();
 
         if (isValid) {
+            const initialBasicBank = 100_000;
             const user = {
                 firstName: form.firstName,
                 lastName: form.lastName,
                 email: form.email,
                 password: form.password,
+                basicBank: initialBasicBank,
+                cryptoBank: [],
             }
 
             axios.get(`http://localhost:3000/users?email=${form.email}`)
@@ -94,7 +102,9 @@ const SignUpForm = () => {
                         axios.post('http://localhost:3000/users', user)
                             .then(response => {
                                 console.log('Dane wysłane pomyślnie:', response.data);
-                                setSuccess(prev => [...prev, 'Konto utworzone,możesz się zalogować'])
+                                setUserWallet(user);
+                                setSuccess(prev => [...prev, 'Konto utworzone,możesz się zalogować']);
+                                navigate('/')
                             })
                             .catch(error => {
                                 console.error('Błąd podczas wysyłania danych:', error);
@@ -108,7 +118,6 @@ const SignUpForm = () => {
                 });
         }
     };
-
 
     return (
         <Container>
@@ -173,6 +182,7 @@ const SignUpForm = () => {
                             <StyledButton type="submit" fullWidth variant="contained">
                                 Sign Up
                             </StyledButton>
+
                             <Box>
                                 <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
                                 <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
