@@ -19,7 +19,7 @@ Aplikacja jest zbudowana przy użyciu React, Material-UI, Vite.
    ```
 2. Przejdź do katalogu projektu:
    ```bash
-   cd crypto-wallet-dashboard
+   cd crypto-vault
    ```
 3. Zainstaluj zależności:
    ```bash
@@ -55,4 +55,4 @@ Aplikacja korzysta z Vite jako narzędzia do budowania i uruchamiania.
 - **Zarządzanie kryptowalutami**: Przeglądaj posiadane kryptowaluty wraz z ilością i datą zakupu.
 - **Wykonywanie transakcji**: Kupuj i sprzedawaj kryptowaluty, korzystając z aktualnych kursów.
 
-Projekt jest licencjonowany na licencji MIT,Szczegóły znajdują się w pliku License.md .
+Projekt jest licencjonowany na licencji MIT,szczegóły znajdują się w pliku License.md .
