@@ -34,7 +34,7 @@
       "lastName": "pies",
       "email": "reksio@op.pl",
       "password": "reksio",
-      "basicBank": 73561,
+      "basicBank": 56244,
       "cryptoBank": [
         {
           "name": "Ethereum",
@@ -59,6 +59,12 @@
           "value": 2.0142740158319077,
           "price": 3004.06,
           "date": "8.07.2024, 17:33:12"
+        },
+        {
+          "name": "Hedera",
+          "value": 263052.3613495162,
+          "price": 0.065831,
+          "date": "8.07.2024, 19:22:02"
         }
       ]
     }

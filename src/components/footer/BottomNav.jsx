@@ -17,38 +17,35 @@ const SimpleBottomNavigation = () => {
     const {isLogged} = useContext(LoginContext)
     return (
         <StyledBox>
-
-            <StyledBottomNavigation
-                showLabels
-                value={value}
-                sx={{}}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
-                }}
-            >
-                {isLogged && (
-                    <>
-                        <StyledBottomNavigationAction
-                            label="DASHBOARD"
-                            icon={<GridViewIcon/>}
-                            component={Link}
-                            to="/dashboard"
-                        />
-                        <StyledBottomNavigationAction
-                            label="TRADE"
-                            icon={<AddCardIcon/>}
-                            component={Link}
-                            to="/trade"
-                        />
-                        <StyledBottomNavigationAction
-                            label="WALLET"
-                            icon={<SavingsIcon/>}
-                            component={Link}
-                            to="/wallet"
-                        />
-                    </>
-                )}
-            </StyledBottomNavigation>
+            {isLogged && (
+                <StyledBottomNavigation
+                    showLabels
+                    value={value}
+                    sx={{}}
+                    onChange={(event, newValue) => {
+                        setValue(newValue);
+                    }}
+                >
+                    <StyledBottomNavigationAction
+                        label="DASHBOARD"
+                        icon={<GridViewIcon/>}
+                        component={Link}
+                        to="/dashboard"
+                    />
+                    <StyledBottomNavigationAction
+                        label="TRADE"
+                        icon={<AddCardIcon/>}
+                        component={Link}
+                        to="/trade"
+                    />
+                    <StyledBottomNavigationAction
+                        label="WALLET"
+                        icon={<SavingsIcon/>}
+                        component={Link}
+                        to="/wallet"
+                    />
+                </StyledBottomNavigation>
+            )}
         </StyledBox>);
 };
 //Styles
