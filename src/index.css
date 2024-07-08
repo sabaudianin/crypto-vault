@@ -9,13 +9,12 @@
     --background-color: #111;
     scrollbar-color: var(--primary-color) var(--secondary-color);
     font-size: clamp(24px, 3vw, 30px);
-
 }
 
 * {
     box-sizing: border-box;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -24,9 +23,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-ul,li{
+
+ul, li {
     list-style-type: none;
 }
 

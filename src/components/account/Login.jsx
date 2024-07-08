@@ -1,4 +1,4 @@
-import React, {useState,useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import {LoginContext} from '../../../database/LoginProvider.jsx';
 import SignUpButton from "./SignUpButton.jsx";
@@ -13,7 +13,7 @@ import {styled} from '@mui/system';
 
 
 const LoginForm = () => {
-const {isLogged,logIn,logOut}=useContext(LoginContext)
+    const {isLogged, logIn, logOut} = useContext(LoginContext)
 
     const [form, setForm] = useState({
         firstName: '',

@@ -10,13 +10,12 @@ const App = () => {
 
     return (
         <Wrapper>
-                <ResponsiveAppBar/>
-                <SimpleContainer>
-                    <Router/>
-                </SimpleContainer>
-                <SimpleBottomNavigation/>
+            <ResponsiveAppBar/>
+            <SimpleContainer>
+                <Router/>
+            </SimpleContainer>
+            <SimpleBottomNavigation/>
         </Wrapper>
-
     );
 };
 

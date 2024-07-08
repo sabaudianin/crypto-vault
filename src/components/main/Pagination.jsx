@@ -8,30 +8,21 @@ import Stack from '@mui/material/Stack';
 
 const PaginationSize = memo(() => {
     const {page, updatePage} = useContext(DataContext);
-    console.log('Pagination mount', page)
 
     const handleChange = (e, value) => {
-        console.log(e, value)
         updatePage(value)
     };
 
     return (
-
         <StyledStack spacing={2}>
-            <Pagination
+            <StyledPagination
                 count={10}
                 shape="rounded"
                 size="xl"
                 onChange={handleChange}
                 page={page}
-                sx={{
-                    fontFamily: 'inherit',
-                    display: 'flex',
-                    justifyContent: 'center'
-
-                }}/>
+            />
         </StyledStack>
-
     );
 });
 
@@ -46,11 +37,15 @@ const StyledStack = styled(Stack)({
         color: 'inherit',
         fontFamily: 'inherit',
         fontWeight: 400,
-
         '&.Mui-selected': {
-            backgroundColor: 'rgba(196,143,8,1)',
-
+            backgroundColor: 'var(--tertiary-color)',
         },
     },
+})
+
+const StyledPagination = styled(Pagination)({
+    fontFamily: 'inherit',
+    display: 'flex',
+    justifyContent: 'center'
 })
 export default PaginationSize;

@@ -1,9 +1,12 @@
 import React, { useContext, useMemo, memo, useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton} from '@mui/material';
+
 import { DataContext } from '../../../database/DataFetch.jsx';
 import {WalletContext} from "../../../database/WalletProvider.jsx";
 import PaginationSize from './Pagination.jsx';
 import Market from './Market.jsx';
+
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
+    IconButton} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { styled } from '@mui/material/styles';
 
@@ -45,7 +48,7 @@ console.log(data, 'Trade')
         return (
            <>
                 <StyledTableContainer component={Paper}>
-                    <Table sx={{ minWidth: 350 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 450 }} aria-label="simple table">
                         <TableHead>
                             <TableRow size='xs'>
                                 <StyledTableCell>ID</StyledTableCell>
@@ -88,6 +91,9 @@ console.log(data, 'Trade')
     }, [data, loading, error, open, selectedCoin]);
 });
 Trade.displayName = 'Trade';
+
+
+//Style
 
 const StyledTableContainer = styled(TableContainer)({
     backgroundColor: 'inherit',

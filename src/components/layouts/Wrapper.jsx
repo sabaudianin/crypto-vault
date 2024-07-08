@@ -7,10 +7,7 @@ import Login from '../account/Login';
 const Wrapper = ({children}) => {
     return (
         <RetroContainer>
-
-                {children}
-
-
+            {children}
         </RetroContainer>
     );
 };
@@ -22,7 +19,6 @@ const RetroContainer = styled(Box)({
     height: '98vh',
     display: 'grid',
     gridTemplateRows: 'auto 1fr auto',
-
     overflowY: 'auto',
     padding: '0.5rem',
     border: '2px solid var(--primary-color)',

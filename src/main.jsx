@@ -5,11 +5,11 @@ import {HashRouter} from "react-router-dom";
 import App from './App.jsx'
 import {DataProvider} from "../database/DataFetch.jsx";
 import {LoginProvider} from '../database/LoginProvider.jsx'
-
-import {StyledEngineProvider} from '@mui/material/styles';
+import {WalletProvider} from "../database/WalletProvider.jsx";
 
 import './index.css'
-import {WalletProvider} from "../database/WalletProvider.jsx";
+
+import {StyledEngineProvider} from '@mui/material/styles';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

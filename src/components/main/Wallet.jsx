@@ -1,16 +1,15 @@
 import React, {useContext} from 'react';
-import { styled } from '@mui/material/styles';
-
-import {Typography,Box,Grid} from'@mui/material'
 
 import {WalletContext} from "../../../database/WalletProvider.jsx";
 import {Item} from './Dashboard.jsx'
+
+import { styled } from '@mui/material/styles';
+import {Typography,Box,Grid} from'@mui/material'
 
 
 
 const Wallet = () => {
     const {basicBank,cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(WalletContext)
-
 
     const handleClick=(item)=>{
         console.log('Sprzedane',item)

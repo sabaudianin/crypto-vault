@@ -1,7 +1,6 @@
 import React, {useContext, useMemo, memo} from 'react';
 
 import {DataContext} from '../../../database/DataFetch.jsx';
-
 import PaginationSize from './Pagination.jsx';
 
 import {styled} from '@mui/material/styles';
@@ -89,11 +88,11 @@ const Item = styled(Paper)(({theme}) => ({
     maskSize: '100% 2px',
     textShadow: '0 0 0.5rem',
     border: '1px solid var(--primary-color)',
-    cursor:'pointer',
+    cursor: 'pointer',
     borderRadius: '4px',
-        '&:hover':{
-            background:'var( --secondary-color)'
-        }
+    '&:hover': {
+        background: 'var( --secondary-color)'
+    }
 }));
 
-export {BasicGrid,Item};
+export {BasicGrid, Item};

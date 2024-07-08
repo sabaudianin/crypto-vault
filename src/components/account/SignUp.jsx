@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import axios from 'axios';
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -62,7 +63,7 @@ const SignUpForm = () => {
             formErrors.push('Hasło jest za krótkie,min 5 znaków');
             isValid = false;
         }
-        if (!form.condition ){
+        if (!form.condition) {
             formErrors.push('Musisz zaakceptowac warunki');
             isValid = false;
         }

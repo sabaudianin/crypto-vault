@@ -8,7 +8,6 @@ import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOu
 import {styled} from '@mui/material/styles';
 
 
-
 const Market = ({coin, onClose}) => {
     const {basicBank, transactionBasicBank, transactionCryptoBank} = useContext(WalletContext);
     const [amountToTrade, setAmountToTrade] = useState(0);
@@ -64,7 +63,7 @@ const Market = ({coin, onClose}) => {
                 <StyledTypography variant="body1">Price: ${coin.current_price}</StyledTypography>
                 <StyledTypography variant="body1">Wallet: ${basicBank}</StyledTypography>
                 <Box>
-                    <StyledTypography  gutterBottom>
+                    <StyledTypography gutterBottom>
                         Amount
                     </StyledTypography>
                     <Stack>
@@ -74,7 +73,7 @@ const Market = ({coin, onClose}) => {
                             aria-labelledby="input-slider"
                             min={0}
                             max={basicBank}
-                            sx={{color:'red'}}
+                            sx={{color: 'red'}}
                         />
                     </Stack>
                     <Stack>
@@ -106,7 +105,7 @@ const Market = ({coin, onClose}) => {
 
 //Styles
 const StyledGrid = styled(Grid)({
-    width:'70%',
+    width: '70%',
     position: 'fixed',
     zIndex: 2,
     fontFamily: 'inherit',
@@ -136,26 +135,27 @@ const StyledTypography = styled(Typography)({
 
 const ClosingButton = styled(Button)({
     position: 'absolute',
-    fontWeight:900,
+    fontWeight: 900,
     top: 0,
     right: 0,
-    color:'var(--secondary-color)',
-    '&:hover':{
-        color:'var(--tertiary-color)'
+    color: 'var(--secondary-color)',
+    '&:hover': {
+        color: 'var(--tertiary-color)'
     },
 })
 
-const BuyButton=styled(Button)({
-    color:'var(--secondary-color)',
-    fontFamily:'inherit',
-    fontWeight:900,
-    '&:hover':{
-        color:'var(--tertiary-color)'
+const BuyButton = styled(Button)({
+    color: 'var(--secondary-color)',
+    fontFamily: 'inherit',
+    fontWeight: 900,
+    '&:hover': {
+        color: 'var(--tertiary-color)'
     },
 })
 
 const TradeInput = styled(Input)({
-    fontFamily:'inherit',
+    fontFamily: 'inherit',
+    outline: 'none',
     '& input[type=number]': {
         MozAppearance: 'textfield',
     },
