@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext,useCallback} from 'react';
+import React, {useState, useEffect, createContext, useCallback} from 'react';
 import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 
@@ -35,24 +35,24 @@ const DataProvider = ({children}) => {
                 setError(error);
                 setLoading(false);
             });
-    },[])
+    }, [])
 
 
     useEffect(() => {
         fetchData(page);
-console.log('useEffect DataProvider')
+        console.log('useEffect DataProvider')
         const intervalId = setInterval(() => {
             fetchData(page);
         }, 600000);
 
         return () => clearInterval(intervalId);
-    }, [fetchData,page]);
+    }, [fetchData, page]);
 
 
     const updatePage = useCallback((newPage) => {
         setPage(newPage);
         setLoading(true);
-    },[])
+    }, [])
 
     return (
         <DataContext.Provider value={{data, loading, error, updatePage, page}}>

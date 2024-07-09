@@ -4,7 +4,13 @@ Crypto Vault to aplikacja do zarządzania portfelem kryptowalut, która pozwala 
 
 Aplikacja Crypto Vault ma charakter wyłącznie edukacyjny i informacyjny. Nie ma na celu zachęcania do inwestowania w kryptowaluty. Przed rozpoczęciem jakiejkolwiek działalności związanej z handlem kryptowalutami zalecamy zdobycie odpowiedniej wiedzy i konsultację z profesjonalistami. Handel kryptowalutami wiąże się z dużym ryzykiem finansowym.
 
-Aplikacja jest zbudowana przy użyciu React, Material-UI, Vite.
+# Kluczowe Technologie
+
+- **React**: Biblioteka Javascriptowa do budowy interfejsów.
+- **Vite**: Szybkie narzedzie i serwer deweloperski dla nowoczesnych projektów webowych..
+- **React Router**: Standardowa Biblioteka do routingu w Reactowych Aplikacjach
+- **MUI**: Popularny Reactowy UI Framework
+- **Git**:System Kontroli wersji do śledzenia zmian w kodzie.
 
 ## Wymagania
 
