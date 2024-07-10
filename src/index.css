@@ -29,11 +29,17 @@ ul, li {
     list-style-type: none;
 }
 
-.pageSection{
-    max-width:1024px;
+
+/* Styles Page (Home,About,Contact)*/
+
+.pageSection {
+    max-width: 1024px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
 }
+
 .pageSection__header {
-    margin: 5vh;
     text-align: center;
     color: var(--tertiary-color);
     font-size: 2rem;
@@ -46,6 +52,7 @@ ul, li {
 }
 
 .pageSection__text {
+    margin-top: 80px;
     text-indent: 30px;
     text-align: left;
 }
@@ -67,10 +74,6 @@ ul, li {
 }
 
 .pageSection__footer {
-    margin-top: 120px;
-    position: fixed;
-    bottom: 40px;
-    transform: translate(50%,50%);
     text-align: center;
 }
 
