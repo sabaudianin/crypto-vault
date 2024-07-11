@@ -1,4 +1,4 @@
-import React, {useContext, memo} from 'react';
+import React, {useContext} from 'react';
 import {DataContext} from '../../../database/DataFetch.jsx';
 
 import {styled} from '@mui/system';
@@ -6,7 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
-const PaginationSize = memo(() => {
+const PaginationSize = () => {
     const {page, updatePage} = useContext(DataContext);
 
     const handleChange = (e, value) => {
@@ -24,7 +24,7 @@ const PaginationSize = memo(() => {
             />
         </StyledStack>
     );
-});
+};
 
 const StyledStack = styled(Stack)({
     display: 'flex',

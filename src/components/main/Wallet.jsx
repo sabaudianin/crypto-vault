@@ -30,7 +30,6 @@ const Wallet = () => {
             };
             transactionCryptoBank(newTransaction);
         }
-
         handleClose();
     };
 

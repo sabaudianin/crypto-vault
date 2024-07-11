@@ -1,4 +1,4 @@
-import React, {useContext, useMemo, memo} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
 
 import {DataContext} from '../../../database/DataFetch.jsx';
@@ -12,60 +12,58 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 
-const BasicGrid = memo(() => {
+const BasicGrid = () => {
     const {data, loading, error} = useContext(DataContext);
-    const {basicBank}=useContext(UserWalletContext);
+    const {basicBank} = useContext(UserWalletContext);
     console.log(data)
 
-    return useMemo(() => {
-        if (loading) return (
-            <div>....Loading...Please Wait...</div>);
-        if (error) return (
-            <div>Error: {error.message}</div>)
 
-        return (
-            <StyledBox>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Item>
-                            <p>Total Balance:</p>
-                            <p>{basicBank} $</p>
-                        </Item>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Item>
-                            <p>BUY</p>
-                            <AddCircleOutlineIcon/>
-                        </Item>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Item>
-                            <p>SELL</p>
-                            <RemoveCircleOutlineIcon/>
-                        </Item>
-                    </Grid>
+    if (loading) return (
+        <div>....Loading...Please Wait...</div>);
+    if (error) return (
+        <div>Error: {error.message}</div>)
 
-                    <Grid item xs={12}>
-                        <Item spacing={3}>Current Price:</Item>
-                    </Grid>
-
-                    {data.map(currency => (
-                        <Grid item key={currency.id} xs={12} sm={6} md={4} lg={3}>
-                            <Item>{currency.name}-${currency.current_price.toFixed(2)}</Item>
-                        </Grid>
-                    ))}
-
-                    <StyledGrid>
-                        <div>
-                            <PaginationSize/>
-                        </div>
-                    </StyledGrid>
+    return (
+        <StyledBox>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <Item>
+                        <p>Total Balance:</p>
+                        <p>{basicBank} $</p>
+                    </Item>
                 </Grid>
-            </StyledBox>
-        )
-    }, [data, loading, error]);
+                <Grid item xs={6}>
+                    <Item>
+                        <p>BUY</p>
+                        <AddCircleOutlineIcon/>
+                    </Item>
+                </Grid>
+                <Grid item xs={6}>
+                    <Item>
+                        <p>SELL</p>
+                        <RemoveCircleOutlineIcon/>
+                    </Item>
+                </Grid>
 
-})
+                <Grid item xs={12}>
+                    <Item spacing={3}>Current Price:</Item>
+                </Grid>
+
+                {data.map(currency => (
+                    <Grid item key={currency.id} xs={12} sm={6} md={4} lg={3}>
+                        <Item>{currency.name}-${currency.current_price.toFixed(2)}</Item>
+                    </Grid>
+                ))}
+
+                <StyledGrid>
+                    <div>
+                        <PaginationSize/>
+                    </div>
+                </StyledGrid>
+            </Grid>
+        </StyledBox>
+    )
+}
 
 const StyledBox = styled(Box)({
     // paddingTop: '40px',
