@@ -1,5 +1,6 @@
 import React, {createContext, useState, useCallback} from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const UserWalletContext = createContext()
 
@@ -56,4 +57,8 @@ const UserWalletProvider = ({children}) => {
         {children}
     </UserWalletContext.Provider>)
 }
+
+UserWalletProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 export {UserWalletContext, UserWalletProvider}

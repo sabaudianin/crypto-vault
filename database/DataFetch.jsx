@@ -1,6 +1,5 @@
 import React, {useState, useEffect, createContext, useCallback} from 'react';
 import axios from 'axios';
-// import { useParams } from 'react-router-dom';
 
 //Context Initialization
 const DataContext = createContext();

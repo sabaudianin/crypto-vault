@@ -1,15 +1,16 @@
-import React,{useState,useEffect} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import Logo from './logo.jsx';
 
 import {styled} from '@mui/system';
 import Container from '@mui/material/Container';
+import {UserWalletProvider} from "../../../database/UserWalletProvider.jsx";
 
- const SimpleContainer= ({children})=> {
+const SimpleContainer = ({children}) => {
 
     return (
         <React.Fragment>
-            <StyledContainer maxWidth="xl" >
+            <StyledContainer maxWidth="xl">
                 {/*{showLogo && <Logo />}*/}
                 {children}
             </StyledContainer>
@@ -17,14 +18,15 @@ import Container from '@mui/material/Container';
     );
 }
 
-const StyledContainer=styled(Container)({
+const StyledContainer = styled(Container)({
 
-    overflowY: 'auto' ,
-    marginBottom:'8vh',
-    marginTop:'.5vh',
-    display:'flex',
-    justifyContent:'center',
+    overflowY: 'auto',
+    marginBottom: '8vh',
+    marginTop: '.5vh',
+    display: 'flex',
+    justifyContent: 'center',
     // alignItems:'center',
+
 // const [showLogo, setShowLogo] = useState(true);
     //
     // useEffect(() => {
@@ -36,4 +38,9 @@ const StyledContainer=styled(Container)({
     // }, []);
 
 })
+
+
+SimpleContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 export default SimpleContainer;

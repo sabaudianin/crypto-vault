@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,12 +9,11 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import Box from "@mui/material/Box";
 
+
 const settings = ['Profile', 'Logout'];
 
 
-
-
-const HeaderUserMenu = ({ userMenu, handleOpenUserMenu, handleCloseUserMenu }) => {
+const HeaderUserMenu = ({userMenu, handleOpenUserMenu, handleCloseUserMenu}) => {
     return (
         <Box sx={{flexGrow: 0}}>
             <Tooltip title="Open settings">
@@ -45,5 +46,9 @@ const HeaderUserMenu = ({ userMenu, handleOpenUserMenu, handleCloseUserMenu }) =
         </Box>
     );
 };
-
+HeaderUserMenu.propTypes = {
+    userMenu: PropTypes.any, 
+    handleOpenUserMenu: PropTypes.func.isRequired,
+    handleCloseUserMenu: PropTypes.func.isRequired,
+};
 export default HeaderUserMenu;
