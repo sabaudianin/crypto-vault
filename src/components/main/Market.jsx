@@ -23,12 +23,12 @@ const Market = ({coin, onClose}) => {
                 value: coinsToBuy,
                 price: coin.current_price,
                 date: new Date().toLocaleString()
-            }
+            };
             transactionBasicBank(-amountFloat);
             transactionCryptoBank(newTransaction);
-            console.log('tranzakcja zrealizowana', coinsToBuy, amountFloat)
+            console.log('tranzakcja zrealizowana', coinsToBuy, amountFloat);
         }
-    }
+    };
 
     const handleSliderChange = (event, newAmount) => {
         setAmountToTrade(newAmount);

@@ -20,27 +20,40 @@ const UserWalletProvider = ({children}) => {
     const transactionBasicBank = useCallback((amount) => {
         setBasicBank(prev => {
             const newBasicBank = prev + amount;
-            axios.patch(`http://localhost:3000/users/${userId}`, { basicBank: newBasicBank })
+            axios.patch(`http://localhost:3000/users/${userId}`, {basicBank: newBasicBank})
                 .catch(error => console.error('Błąd podczas basicBanku', error));
             return newBasicBank;
         });
     }, [userId]);
 
-    const transactionCryptoBank = useCallback((newCrypto) => {
+
+    const transactionCryptoBank = useCallback((newTransaction) => {
         setCryptoBank(prev => {
-            const newCryptoBank = [...prev, newCrypto];
-            axios.patch(`http://localhost:3000/users/${userId}`, { cryptoBank: newCryptoBank })
+            let newCryptoBank;
+            const cryptoBankIndex = prev.findIndex(crypto => crypto.date === newTransaction.date);
+
+            if (cryptoBankIndex !== -1) {
+                newCryptoBank = [...prev];
+                newCryptoBank[cryptoBankIndex].value += newTransaction.value;
+
+                if (newCryptoBank[cryptoBankIndex].value <= 0) {
+                    newCryptoBank.splice(cryptoBankIndex, 1);
+                }
+            } else {
+                newCryptoBank = [...prev, newTransaction];
+            }
+
+            axios.patch(`http://localhost:3000/users/${userId}`, {cryptoBank: newCryptoBank})
                 .catch(error => console.error('Błąd podczas zapisywania cryptoBanku:', error));
+
             return newCryptoBank;
         });
     }, [userId]);
 
 
-    return (
-        <UserWalletContext.Provider
-            value={{basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank, setUserWallet}}>
-            {children}
-        </UserWalletContext.Provider>
-    )
+    return (<UserWalletContext.Provider
+        value={{basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank, setUserWallet}}>
+        {children}
+    </UserWalletContext.Provider>)
 }
 export {UserWalletContext, UserWalletProvider}

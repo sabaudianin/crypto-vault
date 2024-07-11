@@ -12,30 +12,48 @@ const Wallet = () => {
     const {basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext);
     const {data} = useContext(DataContext);
     const [open, setOpen] = useState(false);
-    const [selectedCoin, setSelectedCoin] = useState(null);
+    const [selectedCoin, setSelectedCoin] = useState('');
+    const [selectedCoinPrice, setSelectedCoinPrice] = useState(null);
     const [sellAmount, setSellAmount] = useState(0);
+    const [cashToBank, setCashToBank] = useState(0);
 
 
-    const handleSell = (item) => {
-        console.log('Sprzedane', item.name, data);
-        const filteredData = data.filter(coin => coin.name === item.name);
-        console.log(filteredData);
-        console.log(filteredData[0].current_price)
-        return (filteredData[0])
+    const handleSell = () => {
+        transactionBasicBank(cashToBank);
+
+        const cryptoBankCopy = [...cryptoBank];
+        const cryptoIndex = cryptoBankCopy.findIndex(crypto => crypto.date === selectedCoin.date);
+        if (cryptoIndex !== -1) {
+            const newTransaction = {
+                ...cryptoBankCopy[cryptoIndex],
+                value: -sellAmount
+            };
+            transactionCryptoBank(newTransaction);
+        }
+
+        handleClose();
     };
+
     const handleClose = () => {
         setOpen(false);
-        setSelectedCoin(null);
-        setSellAmount(0)
-    }
+        setSelectedCoinPrice(null);
+        setSellAmount(0);
+        setCashToBank(0);
+    };
+
     const handleOpen = (item) => {
+        const coinDetails = data.find(coin => coin.name === item.name)
         setOpen(true);
+        setSelectedCoinPrice(coinDetails);
         setSelectedCoin(item);
-        console.log(selectedCoin)
-    }
+    };
+
     const handleChange = (e, newValue) => {
-        setSellAmount((newValue / 100) * selectedCoin.current_price)
-    }
+        const howMuchToSell = (newValue / 100) * selectedCoin.value
+        setSellAmount(howMuchToSell)
+        const howMuchCashToBank = howMuchToSell * selectedCoinPrice.current_price
+        setCashToBank(howMuchCashToBank)
+    };
 
     return (
         <Box sx={{flexGrow: 1, mt: 2}}>
@@ -54,10 +72,21 @@ const Wallet = () => {
                 {open && (
                     <Modal open={open} onClose={handleClose}>
                         <StyledBox>
-                            <Typography variant="h6">Sell</Typography>
-                            <Typography variant={'body1'}>Current Price:{selectedCoin.current_price}</Typography>
-                            <Typography variant={'body1'}>Amount:</Typography>
-                            <Typography variant={'body1'}>Sell Amount: </Typography>
+                            <Typography variant="h6">
+                                Sell: {selectedCoin.name}
+                            </Typography>
+                            <Typography variant={'body1'}>
+                                Total: {(selectedCoin.value)}
+                            </Typography>
+                            <Typography variant={'body1'}>
+                                Current Price: {selectedCoinPrice.current_price}
+                            </Typography>
+                            <Typography variant={'body1'}>
+                                Amount to Sell: {(sellAmount)}
+                            </Typography>
+                            <Typography variant={'body1'}>
+                                Cash: {(cashToBank)}
+                            </Typography>
                             <Slider
                                 onChange={handleChange}
                                 defaultValue={0}
@@ -88,7 +117,7 @@ const StyledBox = styled(Box)({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 450,
     padding: 70,
     border: '2px solid var(--primary-color)',
     color: 'var(--background-color)',
