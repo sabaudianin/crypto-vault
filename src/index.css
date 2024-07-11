@@ -1,7 +1,81 @@
 @import 'normalize.css';
 
+:root {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    --primary-color: #ffd52c;
+    --secondary-color: #ff5c00;
+    --tertiary-color: #c72d04;
+    --background-color: #111;
+    --appbar-color:#c19f15;
+    scrollbar-color: var(--primary-color) var(--secondary-color);
+    font-size: clamp(24px, 3vw, 30px);
+}
+
 * {
     box-sizing: border-box;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+
+/* Styles Page (Home,About,Contact)*/
+
+.pageSection {
+    max-width: 1024px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+
+.pageSection__header {
+    text-align: center;
+    color: var(--tertiary-color);
+    font-size: 2rem;
+}
+
+.pageSection__title {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.pageSection__text {
+    margin-top: 80px;
+    text-indent: 30px;
+    text-align: left;
+}
+
+@keyframes blink-bg {
+    10%, 30% {
+        color: var(--primary-color);
+    }
+    80%, 100% {
+        color: var(--tertiary-color);
+    }
+}
+
+.pageSection__title--red {
+    text-align: center;
+    padding-top: 10vh;
+    font-size: 1.2rem;
+    animation: blink-bg 1s infinite;
+}
+
+.pageSection__footer {
+    text-align: center;
+}
+
+

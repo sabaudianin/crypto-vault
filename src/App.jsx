@@ -1,18 +1,22 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+
+import Router from './components/router/Router.jsx'
+import Wrapper from "./components/layouts/Wrapper.jsx";
+import ResponsiveAppBar from "./components/header/ResponsiveAppBar.jsx";
+import SimpleContainer from "./components/layouts/Container.jsx";
+import SimpleBottomNavigation from "./components/footer/BottomNav.jsx";
 
 const App = () => {
-  return (
-      <div>
-        <Typography variant="h3" component="h3">
-          Hello, Vite with Material UI!
-        </Typography>
-        <Button variant="contained" color="secondary">
-          Material UI Button
-        </Button>
-      </div>
-  );
+
+    return (
+        <Wrapper>
+            <ResponsiveAppBar/>
+            <SimpleContainer>
+                <Router/>
+            </SimpleContainer>
+            <SimpleBottomNavigation/>
+        </Wrapper>
+    );
 };
 
 export default App;
