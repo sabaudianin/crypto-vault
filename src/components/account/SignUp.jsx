@@ -72,6 +72,7 @@ const SignUpForm = () => {
             formErrors.push('Musisz zaakceptowac warunki');
             isValid = false;
         }
+        console.log("Walidacja")
         setErrors(formErrors);
         return isValid;
     }
@@ -79,7 +80,9 @@ const SignUpForm = () => {
 // Handling Button
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log("Przed walidacją");
         const isValid = validationForm();
+        console.log("Po walidacji, isValid:", isValid);
         setErrors([]);
         setSuccess([]);
 
@@ -116,7 +119,10 @@ const SignUpForm = () => {
                     console.error('Błąd podczas sprawdzania emaila:', error);
                     setErrors(prev => [...prev, 'Błąd podczas wysyłania danych:'])
                 });
+        } else {
+            console.log("Formularz jest nieprawidłowy");
         }
+        console.log("rejestracja")
     };
 
     return (

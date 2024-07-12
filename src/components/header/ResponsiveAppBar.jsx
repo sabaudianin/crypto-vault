@@ -2,39 +2,30 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import HeaderNavMenu from "./HeaderNavMenu";
-import HeaderUserMenu from "./HeaderUserMenu";
+import Logout from "./Logout.jsx";
 
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
 import {styled} from '@mui/material/styles';
-import {Toolbar} from "@mui/material";
+import {Toolbar,AppBar,Typography } from "@mui/material";
 
 
 function ResponsiveAppBar() {
     const [navMenu, setNavMenu] = useState(null);
-    const [userMenu, setUserMenu] = useState(null);
+
     const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setNavMenu(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setUserMenu(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setNavMenu(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setUserMenu(null);
-    };
-
     const handleNavigate = () => {
         navigate('/')
     }
-    return (
 
+    return (
         <StyledAppBar position="static">
             <Toolbar>
                 <StyledTypography
@@ -51,11 +42,7 @@ function ResponsiveAppBar() {
                     handleCloseNavMenu={handleCloseNavMenu}
                     handleNavigate={handleNavigate}
                 />
-
-                <HeaderUserMenu
-                    userMenu={userMenu}
-                    handleOpenUserMenu={handleOpenUserMenu}
-                    handleCloseUserMenu={handleCloseUserMenu}
+                <Logout
                 />
             </Toolbar>
         </StyledAppBar>
