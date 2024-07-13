@@ -1,7 +1,11 @@
 import React, {createContext, useState, useCallback, useContext} from 'react';
-import axios from 'axios';
-import {UserWalletContext} from "./UserWalletProvider.jsx";
 import {useNavigate} from 'react-router-dom';
+
+import {UserWalletContext} from "./UserWalletProvider.jsx";
+
+import axios from 'axios';
+import PropTypes from 'prop-types';
+
 
 const LoginContext = createContext()
 
@@ -46,9 +50,16 @@ const LoginProvider = ({children}) => {
         navigate('/');
     }, [setUserWallet]);
 
-    return (<LoginContext.Provider value={{isLogged, logIn, logOut, errors, success, setErrors}}>
-        {children}
-    </LoginContext.Provider>)
+    return (
+        <LoginContext.Provider value={{isLogged, logIn, logOut, errors, success, setErrors}}>
+            {children}
+        </LoginContext.Provider>
+    )
 }
+
+
+LoginProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export {LoginProvider, LoginContext};

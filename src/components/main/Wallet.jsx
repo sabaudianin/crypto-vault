@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {DataContext} from '../../../database/DataFetch.jsx';
-import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
-import {Item} from './Dashboard.jsx'
+import {DataContext} from '../contextApi/DataProvider.jsx';
+import {UserWalletContext} from "../contextApi/UserWalletProvider.jsx";
+import BasicPaperItem from "./BasicPaperItem.jsx";
+import CloseButton from "./CloseButton.jsx"
 
 import {styled} from '@mui/material/styles';
-import {Typography, Box, Grid, Modal, Slider, Stack, Button} from '@mui/material'
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import {Typography, Box, Grid, Modal, Slider, Stack, Button, Paper} from '@mui/material'
 import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 
 const Wallet = () => {
@@ -58,7 +58,7 @@ const Wallet = () => {
         <Box sx={{flexGrow: 1, mt: 2}}>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <Item>Your Balance :{basicBank} $</Item>
+                    <BasicPaperItem>Your Balance :{basicBank} $</BasicPaperItem>
                 </Grid>
 
                 {cryptoBank.map((item, i) => (
@@ -71,25 +71,27 @@ const Wallet = () => {
                 {open && (
                     <Modal open={open} onClose={handleClose}>
                         <StyledBox>
-                            <Typography variant="h6">
+                            <CloseButton onClose={handleClose}/>
+                            <StyledTypography variant="h6">
                                 Sell: {selectedCoin.name}
-                            </Typography>
-                            <Typography variant={'body1'}>
+                            </StyledTypography>
+                            <StyledTypography variant={'body1'}>
                                 Total: {(selectedCoin.value)}
-                            </Typography>
-                            <Typography variant={'body1'}>
+                            </StyledTypography>
+                            <StyledTypography variant={'body1'}>
                                 Current Price: {selectedCoinPrice.current_price}
-                            </Typography>
-                            <Typography variant={'body1'}>
+                            </StyledTypography>
+                            <StyledTypography variant={'body1'}>
                                 Amount to Sell: {(sellAmount)}
-                            </Typography>
-                            <Typography variant={'body1'}>
+                            </StyledTypography>
+                            <StyledTypography variant={'body1'}>
                                 Cash: {(cashToBank)}
-                            </Typography>
+                            </StyledTypography>
                             <Slider
                                 onChange={handleChange}
                                 defaultValue={0}
                                 step={null}
+                                sx={{color: 'red'}}
                                 marks={[{value: 0, label: '0%'},
                                     {value: 25, label: '25%'},
                                     {value: 50, label: '50%'},
@@ -97,9 +99,8 @@ const Wallet = () => {
                                     {value: 100, label: '100%'},]}>
                             </Slider>
                             <Stack directions={'row'} spacing={2} mt={2}>
-                                <Button onClick={handleClose}> <CloseOutlinedIcon/>
+                                <Button onClick={handleSell} color="error"> Sell <CurrencyExchangeOutlinedIcon/>
                                 </Button>
-                                <Button onClick={handleSell}> Sell <CurrencyExchangeOutlinedIcon/> </Button>
                             </Stack>
                         </StyledBox>
                     </Modal>
@@ -126,4 +127,25 @@ const StyledBox = styled(Box)({
     boxShadow: 'inset 0 0 2rem',
     background: 'linear-gradient(180deg, #fbe63f 100%, #D9BA05 100%, #b6a417 100%)',
 });
+
+const Item = styled(Paper)(({theme}) => ({
+    background: 'inherit',
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: 'var(--primary-color)',
+    maskImage: 'linear-gradient(to bottom, #0005 50%, #000 50%)',
+    maskSize: '100% 2px',
+    textShadow: '0 0 0.5rem',
+    border: '1px solid var(--primary-color)',
+    cursor: 'pointer',
+    borderRadius: '4px',
+    '&:hover': {
+        background: 'var( --secondary-color)'
+    }
+}));
+
+const StyledTypography = styled(Typography)({
+    fontFamily: 'inherit',
+});
+
 export default Wallet;

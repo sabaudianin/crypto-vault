@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
+import {UserWalletContext} from "../contextApi/UserWalletProvider.jsx";
 import FormBox from "./FormBox.jsx"
 import LoginButton from "./LoginButton.jsx"
 import StyledInput from "./StyledInput.jsx";

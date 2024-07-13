@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
-import {LoginContext} from '../../../database/LoginProvider.jsx'
+import {LoginContext} from '../contextApi/LoginProvider.jsx'
 import Home from '../../pages/Home.jsx';
 import About from '../../pages/About.jsx';
 import Contact from '../../pages/Contact.jsx';

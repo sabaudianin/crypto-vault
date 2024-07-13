@@ -1,5 +1,8 @@
 import React, {useState, useEffect, createContext, useCallback} from 'react';
+
+import PropTypes from 'prop-types';
 import axios from 'axios';
+
 
 //Context Initialization
 const DataContext = createContext();
@@ -60,6 +63,10 @@ const DataProvider = ({children}) => {
     );
 };
 
+
+DataProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 export {DataProvider, DataContext};
 
 

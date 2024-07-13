@@ -1,6 +1,6 @@
 import React, {useContext, useMemo, useState, useEffect} from 'react';
 
-import {DataContext} from '../../../database/DataFetch.jsx';
+import {DataContext} from '../contextApi/DataProvider.jsx';
 import PaginationSize from './Pagination.jsx';
 import Market from './Market.jsx';
 

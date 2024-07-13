@@ -5,7 +5,7 @@ import {Grid, styled} from "@mui/material";
 
 const FormErrorGridBox = ({children}) => {
     return (
-        <GridItems sx={12} sm={6}>
+        <GridItems>
             {children}
         </GridItems>
     );

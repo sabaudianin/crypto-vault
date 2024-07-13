@@ -1,15 +1,14 @@
 import React, {useContext, useState} from 'react';
-
-import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
+import CloseButton from "./CloseButton.jsx"
+import {UserWalletContext} from "../contextApi/UserWalletProvider.jsx";
 
 import {Box, Button, Grid, Typography, Stack, Slider, Input} from '@mui/material';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 import {styled} from '@mui/material/styles';
-
+import PropTypes from 'prop-types';
 
 const Market = ({coin, onClose}) => {
-    const {basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext);
+    const {basicBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext);
     const [amountToTrade, setAmountToTrade] = useState(0);
 
     console.log('Market propsy przekazane', coin, basicBank);
@@ -57,8 +56,7 @@ const Market = ({coin, onClose}) => {
             alignItems="center"
         >
             <StyledBox>
-                <ClosingButton onClick={onClose}> <CloseOutlinedIcon/>
-                </ClosingButton>
+                <CloseButton onClose={onClose}/>
                 <StyledTypography variant="h6">Buy {coin.name}</StyledTypography>
                 <StyledTypography variant="body1">Price: ${coin.current_price}</StyledTypography>
                 <StyledTypography variant="body1">Wallet: ${basicBank}</StyledTypography>
@@ -133,16 +131,6 @@ const StyledTypography = styled(Typography)({
     fontSize: '1.5rem'
 })
 
-const ClosingButton = styled(Button)({
-    position: 'absolute',
-    fontWeight: 900,
-    top: 0,
-    right: 0,
-    color: 'var(--secondary-color)',
-    '&:hover': {
-        color: 'var(--tertiary-color)'
-    },
-})
 
 const BuyButton = styled(Button)({
     color: 'var(--secondary-color)',
@@ -172,7 +160,11 @@ const TradeInput = styled(Input)({
     '& .MuiInput-underline.Mui-focused:before': {
         borderBottomColor: 'var(--primary-color)', // Kolor linii po kliknięciu
     }
-
-
 })
+
+Market.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    coin: PropTypes.any.isRequired,
+};
+
 export default Market;

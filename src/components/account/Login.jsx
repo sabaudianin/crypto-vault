@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 
-import {LoginContext} from '../../../database/LoginProvider.jsx';
+import {LoginContext} from '../contextApi/LoginProvider.jsx';
 import SignUpButton from "./SignUpButton.jsx";
 import StyledInput from "./StyledInput.jsx";
 import FormBox from "./FormBox.jsx"

@@ -4,7 +4,7 @@ import Logo from './logo.jsx';
 
 import {styled} from '@mui/system';
 import Container from '@mui/material/Container';
-import {UserWalletProvider} from "../../../database/UserWalletProvider.jsx";
+import {UserWalletProvider} from "../contextApi/UserWalletProvider.jsx";
 
 const SimpleContainer = ({children}) => {
 
