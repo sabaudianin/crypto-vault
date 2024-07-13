@@ -3,18 +3,18 @@ import {useNavigate} from 'react-router-dom';
 
 import HeaderNavMenu from "./HeaderNavMenu";
 import Logout from "./Logout.jsx";
+import LogoTitle from './LogoTitle';
 
-import {styled} from '@mui/material/styles';
-import {Toolbar,AppBar,Typography } from "@mui/material";
-
+import {AppBar, Toolbar} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 function ResponsiveAppBar() {
     const [navMenu, setNavMenu] = useState(null);
-
     const navigate = useNavigate();
 
-    const handleOpenNavMenu = (event) => {
-        setNavMenu(event.currentTarget);
+    const handleOpenNavMenu = (e) => {
+        setNavMenu(e.currentTarget);
+        console.log(e.currentTarget)
     };
 
     const handleCloseNavMenu = () => {
@@ -25,22 +25,22 @@ function ResponsiveAppBar() {
         navigate('/')
     }
 
+    const pages = [
+        {name: 'Home', path: '/home'},
+        {name: 'About', path: '/about'},
+        {name: 'Contact', path: '/contact'},
+    ];
+
     return (
         <StyledAppBar position="static">
             <Toolbar>
-                <StyledTypography
-                    variant="h6"
-                    noWrap
-                    onClick={handleNavigate}
-                >
-                    CryptoVault
-                </StyledTypography>
-
+                <LogoTitle onClick={handleNavigate}/>
                 <HeaderNavMenu
                     navMenu={navMenu}
                     handleOpenNavMenu={handleOpenNavMenu}
                     handleCloseNavMenu={handleCloseNavMenu}
                     handleNavigate={handleNavigate}
+                    pages={pages}
                 />
                 <Logout
                 />
@@ -53,25 +53,8 @@ function ResponsiveAppBar() {
 const StyledAppBar = styled(AppBar)({
     background: 'var(--appbar-color)',
     display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-})
-
-const StyledTypography = styled(Typography)`
-    margin-right: 16px;
-    display: none;
-    position: static;
-    font-weight: 700;
-    letter-spacing: .4rem;
-    color: inherit;
-    text-decoration: none;
-    font-family: inherit;
-    cursor: pointer;
-
-    @media (min-width: 960px) {
-        display: flex;
-    }
-`;
-
+    justifyContent: 'space-around',
+    alignItems: 'center',
+});
 
 export default ResponsiveAppBar;

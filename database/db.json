@@ -8,6 +8,31 @@
       "password": "kasiabasia",
       "basicBank": 104920.50777769434,
       "cryptoBank": []
+    },
+    {
+      "id": "51b9",
+      "firstName": "papa",
+      "lastName": "smerf",
+      "email": "papa@vp.pl",
+      "password": "smerfy",
+      "basicBank": 0,
+      "cryptoBank": [
+        {
+          "name": "Bitcoin",
+          "value": 1.7199566570922413,
+          "price": 58141,
+          "date": "12.07.2024, 20:30:51"
+        }
+      ]
+    },
+    {
+      "id": "1f7b",
+      "firstName": "pies",
+      "lastName": "dog",
+      "email": "pies@op.pl",
+      "password": "123456",
+      "basicBank": 100000,
+      "cryptoBank": []
     }
   ]
 }

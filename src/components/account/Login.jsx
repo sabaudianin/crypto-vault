@@ -42,57 +42,56 @@ const LoginForm = () => {
     };
 
     return (
-        <Container>
-            <StyledBox>
-                <StyledTypography component="h2" variant="h3">
-                    Log In
-                </StyledTypography>
-                <Box component='form' noValidate onSubmit={handleSubmit}>
-                    <GridContainer container>
-                        <GridItems item xs={12} sm={6}>
-                            <StyledTextField required fullWidth
-                                             id="email"
-                                             label="Email Address"
-                                             name="email" // Upewnij się, że name jest poprawny
-                                             value={form.email}
-                                             onChange={handleChange}
-                            />
-                            <StyledTextField required fullWidth
-                                             name="password"
-                                             label="Password"
-                                             type="password"
-                                             id="loginPassword"
-                                             value={form.password}
-                                             onChange={handleChange}
-                            />
-                            <StyledButton type="submit" fullWidth variant="contained">
-                                Log In
-                            </StyledButton>
-                        </GridItems>
-                    </GridContainer>
-                </Box>
-                <SignUpButton/>
-                <Box>
-                    <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
-                    <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
-                </Box>
-            </StyledBox>
-        </Container>
+
+        <StyledBox>
+            <StyledTypography component="h2" variant="h3">
+                Log In
+            </StyledTypography>
+            <Box component='form' noValidate onSubmit={handleSubmit}>
+
+                <GridItems item xs={12} sm={6}>
+                    <StyledTextField required fullWidth
+                                     id="email"
+                                     label="Email Address"
+                                     name="email" // Upewnij się, że name jest poprawny
+                                     value={form.email}
+                                     onChange={handleChange}
+                    />
+                    <StyledTextField required fullWidth
+                                     name="password"
+                                     label="Password"
+                                     type="password"
+                                     id="loginPassword"
+                                     value={form.password}
+                                     onChange={handleChange}
+                    />
+                    <StyledButton type="submit" fullWidth variant="contained">
+                        Log In
+                    </StyledButton>
+                </GridItems>
+
+            </Box>
+            <SignUpButton/>
+            <Box>
+                <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
+            </Box>
+        </StyledBox>
+
     );
 };
 
 // STYLES
 const StyledBox = styled(Box)({
-    textAlign: 'center', width: '100%', fontFamily: 'inherit'
+    textAlign: 'center',
+    maxWidth: '640px',
+    fontFamily: 'inherit'
 });
 
 const StyledTypography = styled(Typography)({
     fontFamily: 'inherit', mb: 3
 });
 
-const GridContainer = styled(Grid)({
-    display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'
-});
 
 const GridItems = styled(Grid)({
     boxShadow: 'inset 0 0 2rem', border: '2px solid var(--primary-color)'

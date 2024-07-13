@@ -64,7 +64,7 @@ const SignUpForm = () => {
             formErrors.push('Hasła nie sa takie same');
             isValid = false;
         }
-        if (!(form.password.length > 5)) {
+        if (!(form.password.length > 4)) {
             formErrors.push('Hasło jest za krótkie,min 5 znaków');
             isValid = false;
         }
@@ -72,7 +72,7 @@ const SignUpForm = () => {
             formErrors.push('Musisz zaakceptowac warunki');
             isValid = false;
         }
-        console.log("Walidacja")
+
         setErrors(formErrors);
         return isValid;
     }
@@ -80,13 +80,12 @@ const SignUpForm = () => {
 // Handling Button
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Przed walidacją");
+
         const isValid = validationForm();
-        console.log("Po walidacji, isValid:", isValid);
-        setErrors([]);
-        setSuccess([]);
 
         if (isValid) {
+            setErrors([]);
+            setSuccess([]);
             const initialBasicBank = 100_000;
             const user = {
                 firstName: form.firstName,
@@ -126,84 +125,85 @@ const SignUpForm = () => {
     };
 
     return (
-        <Container>
-            <StyledBox>
-                <StyledTypography component="h2" variant="h3">
-                    Sign up
-                </StyledTypography>
 
-                <Box component='form' noValidate onSubmit={handleSubmit}>
-                    <GridContainer container>
-                        <GridItems item xs={12} sm={6}>
+        <StyledBox>
+            <StyledTypography component="h2" variant="h3">
+                Sign up
+            </StyledTypography>
 
-                            <StyledTextField required fullWidth
-                                             name="firstName"
-                                             id="firstName"
-                                             label="First Name"
-                                             variant="outlined"
-                                             value={form.firstName}
-                                             onChange={handleChange}
-                            />
+            <Box component='form' noValidate onSubmit={handleSubmit}>
 
-                            <StyledTextField required fullWidth
-                                             id="lastName"
-                                             label="Last Name"
-                                             name="lastName"
-                                             value={form.lastName}
-                                             onChange={handleChange}
-                            />
+                <GridItems item xs={12} sm={6}>
 
-                            <StyledTextField required fullWidth
-                                             id="email"
-                                             label="Email Address"
-                                             name="email"
-                                             value={form.email}
-                                             onChange={handleChange}
-                            />
+                    <StyledTextField required fullWidth
+                                     name="firstName"
+                                     id="firstName"
+                                     label="First Name"
+                                     variant="outlined"
+                                     value={form.firstName}
+                                     onChange={handleChange}
+                    />
 
-                            <StyledTextField required fullWidth
-                                             name="password"
-                                             label="Password"
-                                             type="password"
-                                             id="password"
-                                             value={form.password}
-                                             onChange={handleChange}
-                            />
+                    <StyledTextField required fullWidth
+                                     id="lastName"
+                                     label="Last Name"
+                                     name="lastName"
+                                     value={form.lastName}
+                                     onChange={handleChange}
+                    />
 
-                            <StyledTextField required fullWidth
-                                             name="repeatPassword"
-                                             label="Repeat Password"
-                                             type="password"
-                                             id="RepeatPassword"
-                                             value={form.repeatPassword}
-                                             onChange={handleChange}
-                            />
+                    <StyledTextField required fullWidth
+                                     id="email"
+                                     label="Email Address"
+                                     name="email"
+                                     value={form.email}
+                                     onChange={handleChange}
+                    />
 
-                            <StyledFormControlLabel
-                                control={<StyledCheckbox value="condition" name="condition"
-                                                         checked={form.condition} onChange={handleChange}/>}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
-                            />
+                    <StyledTextField required fullWidth
+                                     name="password"
+                                     label="Password"
+                                     type="password"
+                                     id="password"
+                                     value={form.password}
+                                     onChange={handleChange}
+                    />
 
-                            <StyledButton type="submit" fullWidth variant="contained">
-                                Sign Up
-                            </StyledButton>
+                    <StyledTextField required fullWidth
+                                     name="repeatPassword"
+                                     label="Repeat Password"
+                                     type="password"
+                                     id="RepeatPassword"
+                                     value={form.repeatPassword}
+                                     onChange={handleChange}
+                    />
 
-                            <Box>
-                                <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
-                                <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
-                            </Box>
-                        </GridItems>
+                    <StyledFormControlLabel
+                        control={<StyledCheckbox value="condition" name="condition"
+                                                 checked={form.condition} onChange={handleChange}/>}
+                        label="I want to receive inspiration, marketing promotions and updates via email."
+                    />
 
-                    </GridContainer>
-                </Box>
-            </StyledBox>
-        </Container>
+                    <StyledButton type="submit" fullWidth variant="contained">
+                        Sign Up
+                    </StyledButton>
+
+                    <Box>
+                        <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                        <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                    </Box>
+                </GridItems>
+
+
+            </Box>
+        </StyledBox>
+
     )
 }
 
 //STYLES
 const StyledBox = styled(Box)({
+    maxWidth:'640px',
     textAlign: 'center',
     width: '100%',
     fontFamily: 'inherit'
@@ -213,12 +213,6 @@ const StyledTypography = styled(Typography)({
     fontFamily: 'inherit', mb: 3
 })
 
-const GridContainer = styled(Grid)({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-})
 const GridItems = styled(Grid)({
     boxShadow: 'inset 0 0 2rem', border: '2px solid var(--primary-color)'
 })
