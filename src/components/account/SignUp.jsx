@@ -2,17 +2,12 @@ import React, {useContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import {UserWalletContext} from "../../../database/UserWalletProvider.jsx";
-
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import {styled} from '@mui/system';
-
+import FormBox from "./FormBox.jsx"
+import LoginButton from "./LoginButton.jsx"
+import StyledInput from "./StyledInput.jsx";
+import FormTitle from "./FormTitle.jsx";
+import FormErrorGridBox from "./FormErrorGridBox.jsx"
+import {Grid, FormControlLabel, Checkbox, Box, styled} from '@mui/material';
 import axios from 'axios';
 
 
@@ -49,27 +44,27 @@ const SignUpForm = () => {
         let isValid = true;
 
         if (form.firstName.length < 2) {
-            formErrors.push('Imie musi byc dłuższe niż 2 znaki');
+            formErrors.push('Imie musi byc dłuższe niż 2 znaki.');
             isValid = false;
         }
-        if (form.email.length <= 5) {
-            formErrors.push('Email musi byc dłuższy niż 5 znaków');
+        if (form.lastName.length <= 2) {
+            formErrors.push('Nazwisko musi byc dłuższe niż 2 znaki.');
             isValid = false;
         }
         if (!(form.email.includes("@") && form.email.includes(".") && form.email.length > 5)) {
-            formErrors.push('Niepoprawny adres Email');
+            formErrors.push('Niepoprawny adres Email.');
             isValid = false;
         }
         if (!(form.password === form.repeatPassword && form.password.length > 0 && form.repeatPassword.length > 0)) {
-            formErrors.push('Hasła nie sa takie same');
+            formErrors.push('Hasła nie sa takie same i nie mogą być puste.');
             isValid = false;
         }
         if (!(form.password.length > 4)) {
-            formErrors.push('Hasło jest za krótkie,min 5 znaków');
+            formErrors.push('Hasło jest za krótkie,min 5 znaków.');
             isValid = false;
         }
         if (!form.condition) {
-            formErrors.push('Musisz zaakceptowac warunki');
+            formErrors.push('Musisz zaakceptowac warunki.');
             isValid = false;
         }
 
@@ -126,110 +121,65 @@ const SignUpForm = () => {
 
     return (
 
-        <StyledBox>
-            <StyledTypography component="h2" variant="h3">
+        <FormBox>
+            <FormTitle component={"h2"} variant={"h3"}>
                 Sign up
-            </StyledTypography>
-
+            </FormTitle>
             <Box component='form' noValidate onSubmit={handleSubmit}>
-
-                <GridItems item xs={12} sm={6}>
-
-                    <StyledTextField required fullWidth
-                                     name="firstName"
-                                     id="firstName"
-                                     label="First Name"
-                                     variant="outlined"
-                                     value={form.firstName}
-                                     onChange={handleChange}
+                <FormErrorGridBox>
+                    <StyledInput required fullWidth
+                                 name={"firstName"}
+                                 label={"First Name"}
+                                 variant={"outlined"}
+                                 value={form.firstName}
+                                 onChange={handleChange}
                     />
-
-                    <StyledTextField required fullWidth
-                                     id="lastName"
-                                     label="Last Name"
-                                     name="lastName"
-                                     value={form.lastName}
-                                     onChange={handleChange}
+                    <StyledInput required fullWidth
+                                 label={"Last Name"}
+                                 name={"lastName"}
+                                 value={form.lastName}
+                                 onChange={handleChange}
                     />
-
-                    <StyledTextField required fullWidth
-                                     id="email"
-                                     label="Email Address"
-                                     name="email"
-                                     value={form.email}
-                                     onChange={handleChange}
+                    <StyledInput required fullWidth
+                                 label={"Email Address"}
+                                 name={"email"}
+                                 value={form.email}
+                                 onChange={handleChange}
                     />
-
-                    <StyledTextField required fullWidth
-                                     name="password"
-                                     label="Password"
-                                     type="password"
-                                     id="password"
-                                     value={form.password}
-                                     onChange={handleChange}
+                    <StyledInput required fullWidth
+                                 name={"password"}
+                                 label={"Password"}
+                                 type={"password"}
+                                 value={form.password}
+                                 onChange={handleChange}
                     />
-
-                    <StyledTextField required fullWidth
-                                     name="repeatPassword"
-                                     label="Repeat Password"
-                                     type="password"
-                                     id="RepeatPassword"
-                                     value={form.repeatPassword}
-                                     onChange={handleChange}
+                    <StyledInput required fullWidth
+                                 name={"repeatPassword"}
+                                 label={"Repeat Password"}
+                                 type={"password"}
+                                 value={form.repeatPassword}
+                                 onChange={handleChange}
                     />
-
                     <StyledFormControlLabel
                         control={<StyledCheckbox value="condition" name="condition"
                                                  checked={form.condition} onChange={handleChange}/>}
                         label="I want to receive inspiration, marketing promotions and updates via email."
                     />
-
-                    <StyledButton type="submit" fullWidth variant="contained">
+                    <LoginButton type="submit" fullWidth variant="contained">
                         Sign Up
-                    </StyledButton>
-
+                    </LoginButton>
                     <Box>
                         <ul>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
                         <ul>{success.map((item, i) => <li key={i}>{item}</li>)}</ul>
                     </Box>
-                </GridItems>
-
-
+                </FormErrorGridBox>
             </Box>
-        </StyledBox>
+        </FormBox>
 
     )
 }
 
 //STYLES
-const StyledBox = styled(Box)({
-    maxWidth:'640px',
-    textAlign: 'center',
-    width: '100%',
-    fontFamily: 'inherit'
-})
-
-const StyledTypography = styled(Typography)({
-    fontFamily: 'inherit', mb: 3
-})
-
-const GridItems = styled(Grid)({
-    boxShadow: 'inset 0 0 2rem', border: '2px solid var(--primary-color)'
-})
-const StyledTextField = styled(TextField)({
-    background: 'var(--primary-color)',
-    '& .MuiInputLabel-root': {
-        fontFamily: 'inherit',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-        borderColor: 'var(--secondary-color)',
-    },
-    '&:focus-within': {
-        '& .MuiInputLabel-root': {
-            color: 'black',
-        },
-    },
-});
 
 const StyledFormControlLabel = styled(FormControlLabel)({
     '& .MuiFormControlLabel-label': {
@@ -246,16 +196,5 @@ const StyledCheckbox = styled(Checkbox)({
     },
 });
 
-const StyledButton = styled(Button)({
-    mt: 3,
-    mb: 2,
-    color: 'black',
-    background: 'var(--primary-color)',
-    fontFamily: 'inherit',
-
-    '&:hover': {
-        background: 'var(--secondary-color)',
-    },
-},)
 
 export default SignUpForm;

@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {styled} from '@mui/material/styles';
-import {Box, IconButton, MenuItem, Typography, Menu} from '@mui/material';
+import {Box, IconButton, MenuItem, Typography, Menu, styled} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import PropTypes from 'prop-types';
@@ -34,7 +33,7 @@ const HamburgerBox = ({navMenu, handleOpenNavMenu, handleCloseNavMenu, pages}) =
                 onClick={handleMenuOpen}
                 color="inherit"
             >
-                <MenuIcon/>
+                <MenuIcon sx={{}}/>
             </IconButton>
             <StyledMenu
                 id="menu-appbar"
@@ -53,10 +52,13 @@ const HamburgerBox = ({navMenu, handleOpenNavMenu, handleCloseNavMenu, pages}) =
 
             >
                 {pages.map((page) => (
-                    <MenuItem key={page.name} onClick={handleMenuClose}
+                    <MenuItem key={page.name}
+                              onClick={handleMenuClose}
                               sx={MenuItemStyle}>
                         <Typography sx={TopographyStyle}>
-                            <Link to={page.path} style={LinkStyle}>{page.name}</Link>
+                            <Link to={page.path} style={LinkStyle}>
+                                {page.name}
+                            </Link>
                         </Typography>
                     </MenuItem>
                 ))}
@@ -70,14 +72,21 @@ const HamburgerBox = ({navMenu, handleOpenNavMenu, handleCloseNavMenu, pages}) =
 const StyledBox = styled(Box)`
     flex-grow: 1;
     display: flex;
+    transition: .2s;
+
+    :hover {
+        color: var(--tertiary-color);
+    }
+
     @media (min-width: 900px) {
         display: none;
-        justify-content: flex-end;
+      
     }
 `;
 const StyledMenu = styled(Menu)`
     flex-grow: 1;
     display: flex;
+
 
     @media (min-width: 900px) {
         display: none;
@@ -87,7 +96,7 @@ const MenuItemStyle = {
     background: 'var(--appbar-color)',
     fontFamily: 'inherit',
     '&:hover': {
-        backgroundColor: 'var(--secondary-color)'
+        backgroundColor: 'var(--tertiary-color)'
     },
 }
 

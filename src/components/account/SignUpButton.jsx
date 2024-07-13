@@ -1,7 +1,6 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import Button from '@mui/material/Button';
-import {styled} from '@mui/system';
+import {Button, styled} from '@mui/material';
 
 
 const SignUpButton = () => {

@@ -6,8 +6,15 @@
       "lastName": "basia",
       "email": "kasia@op.pl",
       "password": "kasiabasia",
-      "basicBank": 104920.50777769434,
-      "cryptoBank": []
+      "basicBank": 95794.50777769434,
+      "cryptoBank": [
+        {
+          "name": "BNB",
+          "value": 17.13706270069292,
+          "price": 532.53,
+          "date": "13.07.2024, 17:56:35"
+        }
+      ]
     },
     {
       "id": "51b9",

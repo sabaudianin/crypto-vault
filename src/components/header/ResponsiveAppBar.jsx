@@ -5,8 +5,8 @@ import HeaderNavMenu from "./HeaderNavMenu";
 import Logout from "./Logout.jsx";
 import LogoTitle from './LogoTitle';
 
-import {AppBar, Toolbar} from "@mui/material";
-import {styled} from "@mui/material/styles";
+import {AppBar, Toolbar, styled} from "@mui/material";
+
 
 function ResponsiveAppBar() {
     const [navMenu, setNavMenu] = useState(null);
@@ -33,7 +33,7 @@ function ResponsiveAppBar() {
 
     return (
         <StyledAppBar position="static">
-            <Toolbar>
+            <StyledToolbar>
                 <LogoTitle onClick={handleNavigate}/>
                 <HeaderNavMenu
                     navMenu={navMenu}
@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
                 />
                 <Logout
                 />
-            </Toolbar>
+            </StyledToolbar>
         </StyledAppBar>
 
     );
@@ -55,6 +55,15 @@ const StyledAppBar = styled(AppBar)({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
+    maxWidth: '100%',
 });
+
+const StyledToolbar = styled(Toolbar)`
+    @media (min-width: 900px) {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.7rem;
+    }
+`
 
 export default ResponsiveAppBar;
