@@ -15,7 +15,7 @@ const DataProvider = ({children}) => {
     const [page, setPage] = useState(1)
 
     const fetchData = useCallback((page) => {
-        console.log('fetchData')
+
         const API = 'https://api.coingecko.com/api/v3/coins/markets';
         const params = {
             vs_currency: 'usd',
@@ -25,7 +25,6 @@ const DataProvider = ({children}) => {
             sparkline: true,
             price_change_percentage: '24h'
         };
-        console.log('Update Danych w funkcji api data')
         setLoading(true);
 
         axios.get(API, {params})
@@ -42,7 +41,6 @@ const DataProvider = ({children}) => {
 
     useEffect(() => {
         fetchData(page);
-        console.log('useEffect DataProvider')
         const intervalId = setInterval(() => {
             fetchData(page);
         }, 600000);

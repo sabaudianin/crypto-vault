@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import HeaderNavMenu from "./HeaderNavMenu";
@@ -8,22 +8,22 @@ import LogoTitle from './LogoTitle';
 import {AppBar, Toolbar, styled} from "@mui/material";
 
 
-function ResponsiveAppBar() {
+const ResponsiveAppBar = () => {
     const [navMenu, setNavMenu] = useState(null);
     const navigate = useNavigate();
 
-    const handleOpenNavMenu = (e) => {
+    const handleOpenNavMenu = useCallback((e) => {
         setNavMenu(e.currentTarget);
         console.log(e.currentTarget)
-    };
+    }, []);
 
-    const handleCloseNavMenu = () => {
+    const handleCloseNavMenu = useCallback(() => {
         setNavMenu(null);
-    };
+    }, []);
 
-    const handleNavigate = () => {
-        navigate('/')
-    }
+    const handleNavigate = useCallback(() => {
+        navigate('/');
+    }, [navigate]);
 
     const pages = [
         {name: 'Home', path: '/home'},

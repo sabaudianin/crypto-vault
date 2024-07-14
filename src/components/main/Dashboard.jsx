@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
-import {UserWalletContext} from "../contextApi/UserWalletProvider.jsx";
 
+import {UserWalletContext} from "../contextApi/UserWalletProvider.jsx";
 import {DataContext} from '../contextApi/DataProvider.jsx';
 import PaginationSize from './Pagination.jsx';
 import GridCentered from "./GridCentered.jsx";
 import BasicPaperItem from "./BasicPaperItem.jsx";
 import FetchStatus from "./FetchStatus.jsx";
+
 import {styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -16,8 +17,6 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 const BasicGrid = () => {
     const {data, loading, error} = useContext(DataContext);
     const {basicBank} = useContext(UserWalletContext);
-    console.log(data)
-
 
     return (
         <StyledBox>
@@ -30,18 +29,6 @@ const BasicGrid = () => {
                             <p>{basicBank} $</p>
                         </BasicPaperItem>
                     </GridCentered>
-                    <Grid item xs={6}>
-                        <BasicPaperItem>
-                            <p>BUY</p>
-                            <AddCircleOutlineIcon/>
-                        </BasicPaperItem>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <BasicPaperItem>
-                            <p>SELL</p>
-                            <RemoveCircleOutlineIcon/>
-                        </BasicPaperItem>
-                    </Grid>
 
                     <Grid item xs={12}>
                         <BasicPaperItem spacing={3}>Current Price:</BasicPaperItem>

@@ -16,7 +16,7 @@ const Wallet = () => {
     const [selectedCoinPrice, setSelectedCoinPrice] = useState(null);
     const [sellAmount, setSellAmount] = useState(0);
     const [cashToBank, setCashToBank] = useState(0);
-
+    const [error, setError] = useState(false);
 
     const handleSell = () => {
         transactionBasicBank(cashToBank);
@@ -38,14 +38,24 @@ const Wallet = () => {
         setSelectedCoinPrice(null);
         setSellAmount(0);
         setCashToBank(0);
+    }
+
+    const handleCloseError = () => {
+        setError(false);
     };
 
     const handleOpen = (item) => {
-        const coinDetails = data.find(coin => coin.name === item.name)
-        setOpen(true);
-        setSelectedCoinPrice(coinDetails);
-        setSelectedCoin(item);
-    };
+
+            const coinDetails = data.find(coin => coin.name === item.name)
+            if (coinDetails) {
+                setOpen(true);
+                setSelectedCoinPrice(coinDetails);
+                setSelectedCoin(item);
+            } else {
+                setError(true);
+            }
+        }
+    ;
 
     const handleChange = (e, newValue) => {
         const howMuchToSell = (newValue / 100) * selectedCoin.value
@@ -64,7 +74,7 @@ const Wallet = () => {
                 {cryptoBank.map((item, i) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
                         <Item onClick={(e) => handleOpen(item, e)}>{item.name} - {item.value}
-                            <Typography sx={{fontSize: '.5rem'}}>Price:{item.price} , Date:{item.date}</Typography>
+                            <StyledTyphographySmall>Price:{item.price} , Date:{item.date}</StyledTyphographySmall>
                         </Item>
                     </Grid>
                 ))}
@@ -102,6 +112,18 @@ const Wallet = () => {
                                 <Button onClick={handleSell} color="error"> Sell <CurrencyExchangeOutlinedIcon/>
                                 </Button>
                             </Stack>
+                        </StyledBox>
+                    </Modal>
+                )}
+
+                {error && (
+                    <Modal open={error} onClose={handleCloseError}>
+                        <StyledBox>
+                            <CloseButton onClose={handleCloseError}/>
+                            <StyledTypography variant="h6" color="error">
+                                Przepraszamy, Aplikacja w budowie, zmien strone w Dashboard , na strone z wybraną
+                                kryptowaluta do sprzedaży. Najmocniej przepraszamy :)
+                            </StyledTypography>
                         </StyledBox>
                     </Modal>
                 )}
@@ -148,4 +170,7 @@ const StyledTypography = styled(Typography)({
     fontFamily: 'inherit',
 });
 
+const StyledTyphographySmall = styled(Typography)({
+    fontSize: '.5rem',
+})
 export default Wallet;

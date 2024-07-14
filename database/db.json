@@ -6,15 +6,8 @@
       "lastName": "basia",
       "email": "kasia@op.pl",
       "password": "kasiabasia",
-      "basicBank": 89968.83649156961,
-      "cryptoBank": [
-        {
-          "name": "XRP",
-          "value": 26727.54717522328,
-          "price": 0.557814,
-          "date": "13.07.2024, 22:03:52"
-        }
-      ]
+      "basicBank": 104053.26237680037,
+      "cryptoBank": []
     },
     {
       "id": "51b9",

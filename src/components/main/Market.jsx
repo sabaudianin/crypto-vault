@@ -11,7 +11,7 @@ const Market = ({coin, onClose}) => {
     const {basicBank, transactionBasicBank, transactionCryptoBank} = useContext(UserWalletContext);
     const [amountToTrade, setAmountToTrade] = useState(0);
 
-    console.log('Market propsy przekazane', coin, basicBank);
+
 
     const handleBuy = () => {
         const amountFloat = parseFloat(amountToTrade);
