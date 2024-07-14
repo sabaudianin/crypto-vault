@@ -4,22 +4,22 @@ import Logo from './logo.jsx';
 
 import {styled} from '@mui/system';
 import Container from '@mui/material/Container';
-import {UserWalletProvider} from "../../../database/UserWalletProvider.jsx";
+import {UserWalletProvider} from "../contextApi/UserWalletProvider.jsx";
 
 const SimpleContainer = ({children}) => {
 
     return (
-        <React.Fragment>
-            <StyledContainer maxWidth="xl">
-                {/*{showLogo && <Logo />}*/}
-                {children}
-            </StyledContainer>
-        </React.Fragment>
+
+        <StyledContainer maxWidth="xl">
+            {/*{showLogo && <Logo />}*/}
+            {children}
+        </StyledContainer>
+
     );
 }
 
 const StyledContainer = styled(Container)({
-
+    width: '100%',
     overflowY: 'auto',
     marginBottom: '8vh',
     marginTop: '.5vh',

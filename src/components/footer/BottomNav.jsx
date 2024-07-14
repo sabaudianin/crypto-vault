@@ -1,18 +1,13 @@
-import React, {useContext} from 'react';
+import React, {useContext,useState} from 'react';
 import {Link} from 'react-router-dom';
 
-import {LoginContext} from '../../../database/LoginProvider.jsx';
+import {LoginContext} from '../contextApi/LoginProvider.jsx';
 
-import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import AddCardIcon from '@mui/icons-material/AddCard';
-import SavingsIcon from '@mui/icons-material/Savings';
-import GridViewIcon from '@mui/icons-material/GridView';
-import {styled} from '@mui/system';
+import {BottomNavigation, BottomNavigationAction, Box, styled} from '@mui/material';
+import {AddCard as AddCardIcon, Savings as SavingsIcon, GridView as GridViewIcon} from '@mui/icons-material';
 
 const SimpleBottomNavigation = () => {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const {isLogged} = useContext(LoginContext)
     return (
@@ -21,7 +16,6 @@ const SimpleBottomNavigation = () => {
                 <StyledBottomNavigation
                     showLabels
                     value={value}
-                    sx={{}}
                     onChange={(event, newValue) => {
                         setValue(newValue);
                     }}
@@ -48,6 +42,7 @@ const SimpleBottomNavigation = () => {
             )}
         </StyledBox>);
 };
+
 //Styles
 const StyledBox = styled(Box)({
     width: '100%',

@@ -40,7 +40,7 @@ Aplikacja Crypto Vault ma charakter wyłącznie edukacyjny i informacyjny. Nie m
 
 Aplikacja korzysta z Vite jako narzędzia do budowania i uruchamiania.
 
-1. Uruchom serwer JSON:
+1. Uruchom serwer JSON w katalogu cd database
    ```bash
    json-server --watch db.json --port 3001
    ```

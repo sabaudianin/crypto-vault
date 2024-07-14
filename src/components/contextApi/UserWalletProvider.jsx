@@ -22,7 +22,7 @@ const UserWalletProvider = ({children}) => {
         setBasicBank(prev => {
             const newBasicBank = prev + amount;
             axios.patch(`http://localhost:3000/users/${userId}`, {basicBank: newBasicBank})
-                .catch(error => console.error('Błąd podczas basicBanku', error));
+                .catch(error => console.error('Błąd podczas zapisywania do basicBanku', error));
             return newBasicBank;
         });
     }, [userId]);
@@ -52,10 +52,11 @@ const UserWalletProvider = ({children}) => {
     }, [userId]);
 
 
-    return (<UserWalletContext.Provider
-        value={{basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank, setUserWallet}}>
-        {children}
-    </UserWalletContext.Provider>)
+    return (
+        <UserWalletContext.Provider
+            value={{basicBank, cryptoBank, transactionBasicBank, transactionCryptoBank, setUserWallet}}>
+            {children}
+        </UserWalletContext.Provider>)
 }
 
 UserWalletProvider.propTypes = {

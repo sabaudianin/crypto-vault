@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {DataContext} from '../../../database/DataFetch.jsx';
+import {DataContext} from '../contextApi/DataProvider.jsx';
 
 import {styled} from '@mui/system';
 import Pagination from '@mui/material/Pagination';

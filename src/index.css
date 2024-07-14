@@ -7,7 +7,7 @@
     --secondary-color: #ff5c00;
     --tertiary-color: #c72d04;
     --background-color: #111;
-    --appbar-color:#c19f15;
+    --appbar-color: #c19f15;
     scrollbar-color: var(--primary-color) var(--secondary-color);
     font-size: clamp(24px, 3vw, 30px);
 }
@@ -30,14 +30,38 @@ ul, li {
     list-style-type: none;
 }
 
+input:-webkit-autofill {
+    background-color: var(--primary-color);
+    -webkit-box-shadow: 0 0 0 1000px var(--primary-color) inset;
+    -webkit-text-fill-color: black;
+}
+
+input:-webkit-autofill:focus {
+    background-color: var(--primary-color);
+    -webkit-box-shadow: 0 0 0 1000px var(--primary-color) inset;
+    -webkit-text-fill-color: black;
+
+}
+
+input:-moz-autofill {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 1000px var(--primary-color) inset;
+    color: white;
+}
+
+input:-moz-autofill:focus {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 1000px var(--primary-color) inset;
+    color: white;
+}
 
 /* Styles Page (Home,About,Contact)*/
 
 .pageSection {
     max-width: 1024px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .pageSection__header {
